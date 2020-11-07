@@ -28,11 +28,7 @@ namespace Saber.Core
 
         public virtual bool CheckSecurity()
         {
-            if (User.UserId > 0)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
         public string AccessDenied<T>() where T : Datasilk.Core.Web.IController
