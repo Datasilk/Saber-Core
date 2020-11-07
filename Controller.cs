@@ -22,11 +22,11 @@ namespace Saber.Core
         }
 
         protected IUser user;
-        public abstract IUser User { get; set; }
+        public virtual IUser User { get; set; }
 
-        public void Init() { }
+        public virtual void Init() { }
 
-        public bool CheckSecurity()
+        public virtual bool CheckSecurity()
         {
             if (User.UserId > 0)
             {
@@ -89,6 +89,6 @@ namespace Saber.Core
             return false;
         }
 
-        public abstract string Render(string body = "");
+        public virtual string Render(string body = "") { return body; }
     }
 }
