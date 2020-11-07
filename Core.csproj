@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Saber.Core</AssemblyName>
+    <RootNamespace>Saber.Core</RootNamespace>
+    <Authors>Mark Entingh</Authors>
+    <Company>Datasilk</Company>
+    <Description>Core MVC interfaces used in the Saber MVC website builder.</Description>
+    <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageReleaseNotes>Added Controller class since this is a requirement so Vendor plugins can include their own controllers</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.4.2" />
+  </ItemGroup>
+
+</Project>
