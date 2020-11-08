@@ -44,5 +44,13 @@ namespace Saber.Core
                 RecurseDirectories(list, subpath, ignore);
             }
         }
+
+        public static void ResetCache(string path, string language = "en")
+        {
+            var paths = PageInfo.GetRelativePath(path);
+            var filepath = string.Join("/", paths);
+            Cache.Remove(ContentFields.ContentFile(path, language));
+            ViewCache.Remove(filepath + ".html");
+        }
     }
 }
