@@ -26,7 +26,7 @@ namespace Saber.Core
 
         public virtual void Init() { }
 
-        public virtual bool CheckSecurity()
+        public virtual bool CheckSecurity(string key = "")
         {
             return true;
         }

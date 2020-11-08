@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -36,11 +35,11 @@ namespace Saber.Core
                 var subpath = dir.FullName;
                 if (App.IsDocker)
                 {
-                    subpath = "/" + subpath.Split("/app/")[1];
+                    subpath = "/" + subpath.Replace(App.RootPath, "");
                 }
                 else
                 {
-                    subpath = "\\" + subpath.Split("\\App\\")[1];
+                    subpath = "\\" + subpath.Replace(App.RootPath, "");
                 }
                 RecurseDirectories(list, subpath, ignore);
             }
