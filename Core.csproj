@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Saber.Core</AssemblyName>
     <RootNamespace>Saber.Core</RootNamespace>
     <Authors>Mark Entingh</Authors>
@@ -9,15 +9,15 @@
     <Description>Core MVC interfaces used in the Saber MVC website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Upgraded to Datasilk Core MVC 1.0.5</PackageReleaseNotes>
+    <PackageReleaseNotes>Upgraded to Datasilk Core MVC 1.0.6 and upgraded from .NET Core 3.1 to .NET 5.0</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.5.1</AssemblyVersion>
-    <FileVersion>1.0.5.1</FileVersion>
-    <Version>1.0.5.1</Version>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <Version>1.0.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.5" />
+    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.6" />
   </ItemGroup>
 
 </Project>
