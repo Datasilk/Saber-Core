@@ -9,15 +9,15 @@
     <Description>Core MVC interfaces used in the Saber MVC website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Upgraded to Datasilk Core MVC 1.0.6 and upgraded from .NET Core 3.1 to .NET 5.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Changed the way Datasilk.MVC.Core View handles mustache variables that contain parameters</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.6.0</AssemblyVersion>
-    <FileVersion>1.0.6.0</FileVersion>
-    <Version>1.0.6</Version>
+    <AssemblyVersion>1.0.6.2</AssemblyVersion>
+    <FileVersion>1.0.6.2</FileVersion>
+    <Version>1.0.6.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.6" />
+    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.6.2" />
   </ItemGroup>
 
 </Project>
