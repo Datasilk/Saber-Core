@@ -1,0 +1,40 @@
+﻿using System.Collections.Generic;
+
+namespace Saber.Core
+{
+    public static class Security
+    {
+        public static List<SecurityKey> Keys { get; set; } = new List<SecurityKey>()
+        {
+            new SecurityKey(){
+                Value = "code-editor",
+                Label = "Code Editor",
+                Description = "Edit HTML, LESS, CSS, & JavaScript files using the code editor"
+            },
+            new SecurityKey()
+            {
+                Value = "upload",
+                Label = "Upload Files",
+                Description = "Upload files to wwwroot & upload page resources"
+            },
+            new SecurityKey()
+            {
+                Value = "edit-content",
+                Label = "Edit Content",
+                Description = "Edit multilingual content for web pages"
+            },
+            new SecurityKey()
+            {
+                Value = "page-settings",
+                Label = "Page Settings",
+                Description = "Update settings for web pages, such as title, description & loaded scripts"
+            },
+            new SecurityKey()
+            {
+                Value = "app-settings",
+                Label = "App Settings",
+                Description = "Update application settings, such as website icons"
+            }
+        };
+    }
+}
