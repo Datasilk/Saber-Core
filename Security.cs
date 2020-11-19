@@ -31,9 +31,21 @@ namespace Saber.Core
             },
             new SecurityKey()
             {
-                Value = "app-settings",
-                Label = "App Settings",
+                Value = "website-settings",
+                Label = "Website Settings",
+                Description = "Update website settings, such as icons and plugins"
+            },
+            new SecurityKey()
+            {
+                Value = "website-analytics",
+                Label = "Website Analytics",
                 Description = "Update application settings, such as website icons"
+            },
+            new SecurityKey()
+            {
+                Value = "manage-users",
+                Label = "Manage Users",
+                Description = "View, update, and create users and alter their security permissions."
             }
         };
     }
