@@ -13,11 +13,16 @@ namespace Saber
     {
         public static Environment Environment { get; set; } = Environment.development;
         public static bool IsDocker { get; set; }
+
+        /// <summary>
+        /// Track the last page that was created (for caching purposes)
+        /// </summary>
+        public static Models.Page.Settings LastCreated { get; set; }
+
         private static string _rootPath { get; set; }
 
         public static string RootPath
         {
-
             get
             {
                 if (string.IsNullOrEmpty(_rootPath))

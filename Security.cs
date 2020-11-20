@@ -15,7 +15,19 @@ namespace Saber.Core
             {
                 Value = "upload",
                 Label = "Upload Files",
-                Description = "Upload files to wwwroot & upload page resources"
+                Description = "Upload files to /wwwroot & upload page resources"
+            },
+            new SecurityKey()
+            {
+                Value = "delete-files",
+                Label = "Delete Files",
+                Description = "Delete files under /wwwroot and within page resources"
+            },
+            new SecurityKey()
+            {
+                Value = "delete-pages",
+                Label = "Delete Pages",
+                Description = "Delete files under the /pages & /partials folders"
             },
             new SecurityKey()
             {
@@ -46,6 +58,12 @@ namespace Saber.Core
                 Value = "manage-users",
                 Label = "Manage Users",
                 Description = "View, update, and create users and alter their security permissions."
+            },
+            new SecurityKey()
+            {
+                Value = "manage-security",
+                Label = "Manage Security",
+                Description = "View, update, and create security groups."
             }
         };
     }
