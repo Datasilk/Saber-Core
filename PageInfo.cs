@@ -72,6 +72,14 @@ namespace Saber.Core
             if (contents != "")
             {
                 config = JsonSerializer.Deserialize<Models.Page.Settings>(contents);
+                if(config.header == null)
+                {
+                    config.header = new Models.Page.Template() { file = "header.html" };
+                }
+                if (config.footer == null)
+                {
+                    config.footer = new Models.Page.Template() { file = "footer.html" };
+                }
                 if (config != null) { return config; }
             }
 
@@ -105,6 +113,15 @@ namespace Saber.Core
                     secure = false
                 }
             };
+        }
+
+        public static string NameFromFile(string filename)
+        {
+            if(filename.IndexOf('/') >= 0)
+            {
+                filename = filename.Split('/')[^1];
+            }
+            return filename.Replace(".html", "").Replace("-", " ").Replace("_", " ").Capitalize(); 
         }
 
         public static void SavePageConfig(string path, Models.Page.Settings config)
