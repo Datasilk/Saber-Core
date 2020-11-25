@@ -36,6 +36,10 @@ namespace Saber.Core
             return Datasilk.Core.Web.IController.AccessDenied<T>(this);
         }
 
+        public virtual string AccessDenied() {
+            throw new System.NotImplementedException();
+        }
+
         public string Error<T>() where T : Datasilk.Core.Web.IController
         {
             Context.Response.StatusCode = 500;
