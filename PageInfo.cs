@@ -21,11 +21,6 @@ namespace Saber.Core
                 switch (newpath[0].ToLower())
                 {
                     case "css": newpath[0] = "/CSS"; break;
-                    //case "pages": newpath[0] = "/Pages"; break;
-                    //case "scripts":
-                    //    newpath[0] = "/Scripts";
-                    //    break;
-                    //case "services": newpath[0] = "/Services"; break;
                     default:
                         //prevent hackers from snooping
                         return new string[] { };
@@ -51,6 +46,10 @@ namespace Saber.Core
                         paths[0] = "/Content/pages";
                         break;
                 }
+            }
+            else
+            {
+                return new string[] { };
             }
             return paths;
         }
