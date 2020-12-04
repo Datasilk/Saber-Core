@@ -26,6 +26,15 @@ namespace Saber.Core
 
         public virtual void Init() { }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+            if(user != null)
+            {
+                User.Save();
+            }
+        }
+
         public virtual bool CheckSecurity(string key = "")
         {
             return true;
