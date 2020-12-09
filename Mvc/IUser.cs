@@ -26,6 +26,11 @@ namespace Saber.Core
         List<KeyValuePair<string, bool>> Keys { get; set; }
 
         /// <summary>
+        /// A list of security groups that the user belongs to
+        /// </summary>
+        int[] Groups { get; set; }
+
+        /// <summary>
         /// determines whether or not the user must reset their password
         /// </summary>
         bool ResetPass { get; set; }

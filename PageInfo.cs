@@ -107,9 +107,7 @@ namespace Saber.Core
                 datecreated = DateTime.Now,
                 security = new Models.Page.Security()
                 {
-                    read = new int[] { },
-                    write = new int[] { },
-                    secure = false
+                    groups = new int[] { }
                 }
             };
         }

@@ -33,9 +33,7 @@ namespace Saber.Models.Page
 
     public class Security
     {
-        public bool secure { get; set; } = false;
-        public int[] read { get; set; } = new int[] { };
-        public int[] write { get; set; } = new int[] { };
+        public int[] groups { get; set; } = new int[] { };
     }
 
     public class Template
