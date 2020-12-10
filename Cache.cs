@@ -67,7 +67,7 @@ namespace Saber
 
         public static T Load<T>(string key, Func<T> value, bool serialize = true)
         {
-            if (Store[key] == null)
+            if (!Store.ContainsKey(key) || Store[key] == null)
             {
                 var obj = value();
                 Save(key, serialize ? (object)JsonSerializer.Serialize(obj) : obj);

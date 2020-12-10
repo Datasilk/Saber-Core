@@ -126,5 +126,21 @@ namespace Saber.Core
             var filename = ConfigFilePath(path);
             Cache.SaveFile(filename, JsonSerializer.Serialize(config, new JsonSerializerOptions() { WriteIndented = true }));
         }
+
+        /// <summary>
+        /// Removes all associated cache for a specific web page
+        /// </summary>
+        /// <param name="path">Relative path to the page (e.g. "/Content/pages/home.html")</param>
+        /// <param name="language"></param>
+        public static void ClearCache(string path, string language)
+        {
+            var config = ConfigFilePath(path);
+            Cache.Remove(config);
+            var lang = ContentFields.ContentFile(path, language);
+            Cache.Remove(lang);
+            var paths = PageInfo.GetRelativePath(path);
+            var relpath = string.Join("/", paths);
+            ViewCache.Remove(relpath);
+        }
     }
 }
