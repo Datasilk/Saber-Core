@@ -27,8 +27,6 @@ namespace Saber.Models.Page
         public string prefix { get; set; } = "";
         public string body { get; set; } = "";
         public string suffix { get; set; } = "";
-        public int prefixId { get; set; }
-        public int suffixId { get; set; }
     }
 
     public class Security

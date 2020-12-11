@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -12,7 +13,7 @@ namespace Saber.Core
             var list = new List<string>();
             RecurseDirectories(list, "/Content/pages");
             RecurseDirectories(list, "/Content/partials");
-            list.Add(App.MapPath("/CSS/website.less"));
+            list.Add(App.MapPath("/Content/website.less"));
             RecurseDirectories(list, "/wwwroot", new string[] {App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
             RecurseDirectories(list, "/wwwroot/content", new string[] { ".js", ".css" });
             if (include != null && include.Length > 0)
@@ -51,6 +52,16 @@ namespace Saber.Core
             var filepath = string.Join("/", paths);
             Cache.Remove(ContentFields.ContentFile(path, language));
             ViewCache.Remove(filepath + ".html");
+        }
+
+        /// <summary>
+        /// Generate a CSS file from LESS code
+        /// </summary>
+        /// <param name="content">LESS code</param>
+        /// <param name="outputFile">CSS output file</param>
+        public static void SaveLessFile(string content, string outputFile)
+        {
+            Delegates.Website.SaveLessFile(content, outputFile);
         }
     }
 }

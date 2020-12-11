@@ -5,10 +5,6 @@ namespace Saber.Core
 {
     public static class Email
     {
-        /// <summary>
-        /// The external method used to handle sending emails through Saber via the preferred email client
-        /// </summary>
-        public static Action<MailMessage, string> Handle { get; set; }
 
         /// <summary>
         /// Create a mail message used to be sent by Saber. We do not define a From address since
@@ -43,7 +39,7 @@ namespace Saber.Core
         /// but vendor plugins can contain custom message types by using Vendor.IVendorEmails.</param>
         public static void Send(MailMessage message, string type)
         {
-            Handle(message, type);
+            Delegates.Email.Send(message, type);
         }
     }
 }

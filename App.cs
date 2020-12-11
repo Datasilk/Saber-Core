@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace Saber
 {
@@ -14,6 +15,7 @@ namespace Saber
         public static Environment Environment { get; set; } = Environment.development;
         public static string Host { get; set; }
         public static bool IsDocker { get; set; }
+        public static Dictionary<string, string> Languages { get; set; }
 
         /// <summary>
         /// Track the last page that was created (for caching purposes)
