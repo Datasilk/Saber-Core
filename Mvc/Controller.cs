@@ -10,10 +10,10 @@ namespace Saber.Core
         public StringBuilder Scripts { get; set; } = new StringBuilder();
         public StringBuilder Css { get; set; } = new StringBuilder();
         private List<string> Resources = new List<string>();
-        public bool UsePlatform { get; set; } = false;
+        public bool UsePlatform { get; set; } = true;
         public string Title { get; set; } = "Datasilk";
         public string Description { get; set; } = "";
-        public string Theme { get; set; } = "default";
+        public string Theme { get; set; } = "dark";
         public StringBuilder Footer { get; set; }
 
         public EditorType EditorUsed

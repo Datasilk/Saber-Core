@@ -17,11 +17,6 @@ namespace Saber
         public static bool IsDocker { get; set; }
         public static Dictionary<string, string> Languages { get; set; }
 
-        /// <summary>
-        /// Track the last page that was created (for caching purposes)
-        /// </summary>
-        public static Models.Page.Settings LastCreated { get; set; }
-
         private static string _rootPath { get; set; }
 
         public static string RootPath

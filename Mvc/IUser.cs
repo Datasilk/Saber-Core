@@ -7,11 +7,8 @@ namespace Saber.Core
     public interface IUser
     {
         int UserId { get; set; }
-        short UserType { get; set; }
-        string VisitorId { get; set; }
         string Email { get; set; }
         string Name { get; set; }
-        string DisplayName { get; set; }
         bool Photo { get; set; }
         DateTime DateCreated { get; set; }
 
@@ -30,14 +27,9 @@ namespace Saber.Core
         /// </summary>
         int[] Groups { get; set; }
 
-        /// <summary>
-        /// determines whether or not the user must reset their password
-        /// </summary>
-        bool ResetPass { get; set; }
-
         IUser SetContext(HttpContext context);
         void SetLanguage(string language); 
-        void LogIn(int userId, string email, string name, DateTime datecreated, string displayName = "", short userType = 1, bool photo = false);
+        void LogIn(int userId, string email, string name, DateTime datecreated, bool photo = false);
         void LogOut();
         void Save(bool changed = false);
 

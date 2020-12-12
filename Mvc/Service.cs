@@ -43,6 +43,11 @@ namespace Saber.Core
             return JsonSerializer.Serialize(obj);
         }
 
+        protected string Response(string html)
+        {
+            return JsonResponse(new Response(html, Css.ToString() + Scripts.ToString()));
+        }
+
         public bool CheckSecurity(string key = "")
         {
             if (User.UserId == 1) { return true; }
@@ -91,7 +96,7 @@ namespace Saber.Core
         public void AddCSS(string url, string id = "")
         {
             if (ContainsResource(url)) { return; }
-            Css.Append("S.util.css.load('" + url + "', '" + id + "');");
+            Scripts.Append("S.util.css.load('" + url + "', '" + id + "');");
         }
 
         protected bool ContainsResource(string url)
@@ -99,11 +104,6 @@ namespace Saber.Core
             if (Resources.Contains(url)) { return true; }
             Resources.Add(url);
             return false;
-        }
-
-        protected string Response(string html)
-        {
-            return JsonResponse(new Response(html, Css.ToString() + Scripts.ToString()));
         }
     }
 }
