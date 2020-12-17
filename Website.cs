@@ -59,9 +59,9 @@ namespace Saber.Core
         /// </summary>
         /// <param name="content">LESS code</param>
         /// <param name="outputFile">CSS output file</param>
-        public static void SaveLessFile(string content, string outputFile)
+        public static void SaveLessFile(string content, string outputFile, string workingDir)
         {
-            Delegates.Website.SaveLessFile(content, outputFile);
+            Delegates.Website.SaveLessFile(content, outputFile, workingDir);
         }
     }
 }
