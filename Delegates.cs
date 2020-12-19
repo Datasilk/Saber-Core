@@ -22,6 +22,11 @@ namespace Saber.Core
             /// Used by Saber to delegate execution of Core.Website.SaveLessFile. Please do not modify this field.
             /// </summary>
             public static Action<string, string, string> SaveLessFile { get; set; }
+
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.CopyTempWebsite. Please do not modify this field.
+            /// </summary>
+            public static Action CopyTempWebsite { get; set; }
         }
     }
 }

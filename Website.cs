@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -14,6 +13,7 @@ namespace Saber.Core
             RecurseDirectories(list, "/Content/pages");
             RecurseDirectories(list, "/Content/partials");
             list.Add(App.MapPath("/Content/website.less"));
+            list.Add(App.MapPath("/Content/website.json"));
             RecurseDirectories(list, "/wwwroot", new string[] {App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
             RecurseDirectories(list, "/wwwroot/content", new string[] { ".js", ".css" });
             if (include != null && include.Length > 0)
@@ -26,9 +26,18 @@ namespace Saber.Core
             return list;
         }
 
+        public static List<string> AllFolders()
+        {
+            var list = new List<string>();
+            list.AddRange(Directory.GetDirectories(App.MapPath("/Content/")).Where(a => !a.Replace("\\", "/").Contains("/Content/temp")));
+            list.AddRange(Directory.GetDirectories(App.MapPath("/wwwroot/")).Where(a => !a.Replace("\\", "/").Contains("/wwwroot/editor")));
+            return list;
+        }
+
         private static void RecurseDirectories(List<string> list, string path, string[] ignore = null)
         {
             var parent = new DirectoryInfo(App.MapPath(path));
+            if (!parent.Exists) { return; }
             var dirs = parent.GetDirectories().Where(a => ignore != null ? ignore.Where(b => a.FullName.IndexOf(b) >= 0).Count() == 0 : true);
             list.AddRange(parent.GetFiles().Select(a => a.FullName).Where(a => ignore != null ? ignore.Where(b => a.IndexOf(b) >= 0).Count() == 0  : true));
             foreach(var dir in dirs)
@@ -62,6 +71,16 @@ namespace Saber.Core
         public static void SaveLessFile(string content, string outputFile, string workingDir)
         {
             Delegates.Website.SaveLessFile(content, outputFile, workingDir);
+        }
+
+        /// <summary>
+        /// This will copy all files from /Content/temp to their appropriate folders and initialize the default website.
+        /// This only works if /Content/pages/home.html is missing. Do not use this method unless you wish to overwrite
+        /// the existing website.
+        /// </summary>
+        public static void CopyTempWebsite()
+        {
+            Delegates.Website.CopyTempWebsite();
         }
     }
 }
