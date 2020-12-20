@@ -17,6 +17,7 @@ namespace Saber.Core
 
         public static Dictionary<string, string> GetPageContent(string path, string language)
         {
+            if (language == "") { language = "en"; }
             var contentfile = App.MapPath(ContentFile(path, language));
             var exists = true;
             if (!File.Exists(contentfile))
