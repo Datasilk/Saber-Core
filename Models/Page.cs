@@ -10,16 +10,16 @@ namespace Saber.Models.Page
         public string thumbnail { get; set; } = "";
         public DateTime datecreated { get; set; }
         public Security security { get; set; } = new Security();
-        public Template header { get; set; } = new Template();
-        public Template footer { get; set; } = new Template();
+        public string header { get; set; } = "";
+        public string footer { get; set; } = "";
         public List<string> stylesheets { get; set; } = new List<string>();
         public List<string> scripts { get; set; } = new List<string>();
 
         public Settings()
         {
             datecreated = DateTime.Now;
-            header.file = "header.html";
-            footer.file = "footer.html";
+            header = "header.html";
+            footer = "footer.html";
         }
     }
 
@@ -33,11 +33,5 @@ namespace Saber.Models.Page
     public class Security
     {
         public int[] groups { get; set; } = new int[] { };
-    }
-
-    public class Template
-    {
-        public string file { get; set; } = "";
-        public Dictionary<string, string> fields { get; set; } = new Dictionary<string, string>();
     }
 }

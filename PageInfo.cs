@@ -66,11 +66,11 @@ namespace Saber.Core
                 config = JsonSerializer.Deserialize<Models.Page.Settings>(contents);
                 if(config.header == null)
                 {
-                    config.header = new Models.Page.Template() { file = "header.html" };
+                    config.header = "header.html";
                 }
                 if (config.footer == null)
                 {
-                    config.footer = new Models.Page.Template() { file = "footer.html" };
+                    config.footer = "footer.html";
                 }
                 if (config != null) { return config; }
             }

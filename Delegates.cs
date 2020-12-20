@@ -27,6 +27,13 @@ namespace Saber.Core
             /// Used by Saber to delegate execution of Core.Website.CopyTempWebsite. Please do not modify this field.
             /// </summary>
             public static Action CopyTempWebsite { get; set; }
+
+            public static class Settings
+            {
+                public static Func<Models.Website.Settings> Load { get; set; }
+
+                public static Action<Models.Website.Settings> Save{ get; set; }
+            }
         }
     }
 }

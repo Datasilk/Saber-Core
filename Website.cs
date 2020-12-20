@@ -14,11 +14,11 @@ namespace Saber.Core
             RecurseDirectories(list, "/Content/partials");
             list.Add(App.MapPath("/Content/website.less"));
             list.Add(App.MapPath("/Content/website.json"));
-            RecurseDirectories(list, "/wwwroot", new string[] {App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
+            RecurseDirectories(list, "/wwwroot", new string[] { App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
             RecurseDirectories(list, "/wwwroot/content", new string[] { ".js", ".css" });
             if (include != null && include.Length > 0)
             {
-                foreach(var i in include)
+                foreach (var i in include)
                 {
                     RecurseDirectories(list, i);
                 }
@@ -39,8 +39,8 @@ namespace Saber.Core
             var parent = new DirectoryInfo(App.MapPath(path));
             if (!parent.Exists) { return; }
             var dirs = parent.GetDirectories().Where(a => ignore != null ? ignore.Where(b => a.FullName.IndexOf(b) >= 0).Count() == 0 : true);
-            list.AddRange(parent.GetFiles().Select(a => a.FullName).Where(a => ignore != null ? ignore.Where(b => a.IndexOf(b) >= 0).Count() == 0  : true));
-            foreach(var dir in dirs)
+            list.AddRange(parent.GetFiles().Select(a => a.FullName).Where(a => ignore != null ? ignore.Where(b => a.IndexOf(b) >= 0).Count() == 0 : true));
+            foreach (var dir in dirs)
             {
                 var subpath = dir.FullName;
                 if (App.IsDocker)
@@ -81,6 +81,26 @@ namespace Saber.Core
         public static void CopyTempWebsite()
         {
             Delegates.Website.CopyTempWebsite();
+        }
+
+        public static class Settings
+        {
+            /// <summary>
+            /// Load website settings from /Content/website.json
+            /// </summary>
+            /// <returns></returns>
+            public static Models.Website.Settings Load()
+            {
+                return Delegates.Website.Settings.Load();
+            }
+
+            /// <summary>
+            /// Saves website settings to /Content/website.json
+            /// </summary>
+            public static void Save(Models.Website.Settings settings)
+            {
+                Delegates.Website.Settings.Save(settings);
+            }
         }
     }
 }
