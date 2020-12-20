@@ -33,20 +33,22 @@ namespace Saber.Core
                 {
                     //fill in gaps of data with English content
                     var json_en = Cache.LoadFile(ContentFile(path, "en"));
-                    var content_en = JsonSerializer.Deserialize<Dictionary<string, string>>(json_en);
-                    if (content_en != null)
-                    {
-                        foreach (var d in content_en)
+                    if(json_en != ""){
+                        var content_en = JsonSerializer.Deserialize<Dictionary<string, string>>(json_en);
+                        if (content_en != null)
                         {
-                            if (!content.ContainsKey(d.Key))
+                            foreach (var d in content_en)
                             {
-                                content.Add(d.Key, d.Value);
-                            }
-                            else
-                            {
-                                if (content[d.Key] == "")
+                                if (!content.ContainsKey(d.Key))
                                 {
-                                    content[d.Key] = d.Value;
+                                    content.Add(d.Key, d.Value);
+                                }
+                                else
+                                {
+                                    if (content[d.Key] == "")
+                                    {
+                                        content[d.Key] = d.Value;
+                                    }
                                 }
                             }
                         }
