@@ -35,5 +35,10 @@ namespace Saber.Core
                 public static Action<Models.Website.Settings> Save{ get; set; }
             }
         }
+
+        public static class Log
+        {
+            public static Action<int, string, string, string, string> Error { get; set; }
+        }
     }
 }
