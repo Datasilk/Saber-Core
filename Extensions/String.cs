@@ -256,15 +256,20 @@ namespace Saber.Core.Extensions.Strings
 
         public static bool OnlyAlphabet(this string myStr, params string[] exceptionList)
         {
-            bool result = false;
+            var a = Generic.Asc("a");
+            var z = Generic.Asc("z");
+            var A = Generic.Asc("A");
+            var Z = Generic.Asc("Z");
             for (int x = 0; x <= myStr.Length - 1; x++)
             {
-                result = false;
-                if (Generic.Asc(myStr.Substring(x, 1)) >= Generic.Asc("a") & Generic.Asc(myStr.Substring(x, 1)) <= Generic.Asc("z"))
+                var c = Generic.Asc(myStr.Substring(x, 1));
+                var result = false;
+                if (c >= a & c <= z)
                 {
                     result = true;
                 }
-                if (Generic.Asc(myStr.Substring(x, 1)) >= Generic.Asc("A") & Generic.Asc(myStr.Substring(x, 1)) <= Generic.Asc("Z"))
+
+                if (c >= A & c <= Z)
                 {
                     result = true;
                 }
@@ -288,21 +293,27 @@ namespace Saber.Core.Extensions.Strings
 
         public static bool OnlyLettersAndNumbers(this string myStr, params string[] exceptionList)
         {
-            bool result = false;
+            var a = Generic.Asc("a");
+            var z = Generic.Asc("z");
+            var A = Generic.Asc("A");
+            var Z = Generic.Asc("Z");
+            var zero = Generic.Asc("0");
+            var nine = Generic.Asc("9");
             for (int x = 0; x <= myStr.Length - 1; x++)
             {
-                result = false;
-                if (Generic.Asc(myStr.Substring(x, 1)) >= Generic.Asc("a") & Generic.Asc(myStr.Substring(x, 1)) <= Generic.Asc("z"))
+                var c = Generic.Asc(myStr.Substring(x, 1));
+                var result = false;
+                if (c >= a & c <= z)
                 {
                     result = true;
                 }
 
-                if (Generic.Asc(myStr.Substring(x, 1)) >= Generic.Asc("A") & Generic.Asc(myStr.Substring(x, 1)) <= Generic.Asc("Z"))
+                if (c >= A & c <= Z)
                 {
                     result = true;
                 }
 
-                if (Generic.Asc(myStr.Substring(x, 1)) >= Generic.Asc("0") & Generic.Asc(myStr.Substring(x, 1)) <= Generic.Asc("9"))
+                if (c >= zero & c <= nine)
                 {
                     result = true;
                 }

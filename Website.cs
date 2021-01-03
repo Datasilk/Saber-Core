@@ -29,9 +29,19 @@ namespace Saber.Core
         public static List<string> AllFolders()
         {
             var list = new List<string>();
-            list.AddRange(Directory.GetDirectories(App.MapPath("/Content/")).Where(a => !a.Replace("\\", "/").Contains("/Content/temp")));
-            list.AddRange(Directory.GetDirectories(App.MapPath("/wwwroot/")).Where(a => !a.Replace("\\", "/").Contains("/wwwroot/editor")));
+            list.AddRange(Directory.GetDirectories(App.MapPath("/Content/"))
+                .Where(a => !a.Replace("\\", "/").Contains("/Content/temp")));
+            list.AddRange(Directory.GetDirectories(App.MapPath("/wwwroot/"))
+                .Where(a => !a.Replace("\\", "/").Contains("/wwwroot/editor")));
             return list;
+        }
+
+        public static List<string> AllRootFolders()
+        {
+            var root = App.MapPath("/");
+            return Directory.GetDirectories(App.MapPath("/Content/"), "", SearchOption.TopDirectoryOnly)
+                .Where(a => !a.Replace("\\", "/").Contains("/Content/temp"))
+                .Select(a => a.Replace(root, "").Replace("\\", "/")).ToList();
         }
 
         private static void RecurseDirectories(List<string> list, string path, string[] ignore = null)
