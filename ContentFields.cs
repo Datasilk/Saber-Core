@@ -4,8 +4,19 @@ using System.Text.Json;
 
 namespace Saber.Core
 {
-    public class ContentFields
+    public static class ContentFields
     {
+        public enum FieldType
+        {
+            vendor = 0,
+            block = 1,
+            text = 2,
+            image = 3,
+            partial = 4,
+            linebreak = 5,
+            list = 6
+        }
+
         public static string ContentFile(string path, string language)
         {
             var paths = PageInfo.GetRelativePath(path);
@@ -57,6 +68,11 @@ namespace Saber.Core
                 return content;
             }
             return new Dictionary<string, string>();
+        }
+
+        public static FieldType GetFieldType(View view, int index)
+        {
+            return Delegates.ContentFields.GetFieldType(view, index);
         }
     }
 }

@@ -40,5 +40,10 @@ namespace Saber.Core
         {
             public static Action<int, string, string, string, string> Error { get; set; }
         }
+
+        public static class ContentFields
+        {
+            public static Func<View, int, Core.ContentFields.FieldType> GetFieldType { get; set; }
+        }
     }
 }
