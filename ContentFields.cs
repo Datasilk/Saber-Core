@@ -74,5 +74,20 @@ namespace Saber.Core
         {
             return Delegates.ContentFields.GetFieldType(view, index);
         }
+
+        /// <summary>
+        /// Generate an HTML form for all content fields within a partial view.
+        /// </summary>
+        /// <param name="request">The currente IRequest object</param>
+        /// <param name="title">Title of the form</param>
+        /// <param name="view">Partial view to collect mustache variables from</param>
+        /// <param name="language">Selected language used to pass into all vendor HTML Components found in the partial view</param>
+        /// <param name="container">CSS selector of the HTML container that this form will be injected into. This field is passed into all vendor HTML Components found in the partial view.</param>
+        /// <param name="fields">The values associated with each mustache variable in the partial view.</param>
+        /// <returns>An HTML string representing the content fields form</returns>
+        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields)
+        {
+            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields);
+        }
     }
 }
