@@ -26,7 +26,7 @@ namespace Saber.Core
             return relpath.Replace(file, fileparts[0] + "_" + language + ".json");
         }
 
-        public static Dictionary<string, string> GetPageContent(string path, string language)
+        public static Dictionary<string, string> GetPageContent(string path, string language = "")
         {
             if (language == "") { language = "en"; }
             var contentfile = App.MapPath(ContentFile(path, language));
