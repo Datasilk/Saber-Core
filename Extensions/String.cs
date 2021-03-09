@@ -79,11 +79,10 @@ namespace Saber.Core.Extensions.Strings
         public static string ReplaceOnlyAlphaNumeric(this string myStr, bool allowAlpha = true, bool allowNumbers = true, bool allowSpaces = true)
         {
             string newStr = myStr.ToString();
-            bool result = false;
             int x = 0;
             while (x < newStr.Length)
             {
-                result = false;
+                var result = false;
                 if (allowAlpha == true)
                 {
                     if (Asc(newStr.Substring(x, 1)) >= Asc("a") & Asc(newStr.Substring(x, 1)) <= Asc("z"))
@@ -116,7 +115,7 @@ namespace Saber.Core.Extensions.Strings
                 if (result == false)
                 {
                     //remove character
-                    newStr = newStr.Substring(0, x - 1) + newStr.Substring(x + 1);
+                    newStr = newStr.Substring(0, x) + newStr.Substring(x + 1);
                 }
                 else
                 {
