@@ -9,11 +9,11 @@
     <Description>Core MVC interfaces used in the Saber MVC website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Reverted the way Datasilk.MVC.Core View handles mustache variables that contain parameters</PackageReleaseNotes>
+    <PackageReleaseNotes>Merged Vendor package into Core since there is no need to keep them separated.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.7.0</AssemblyVersion>
-    <FileVersion>1.0.7.0</FileVersion>
-    <Version>1.0.7.0</Version>
+    <AssemblyVersion>1.0.7.1</AssemblyVersion>
+    <FileVersion>1.0.7.1</FileVersion>
+    <Version>1.0.7.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
