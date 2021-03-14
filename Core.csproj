@@ -11,9 +11,9 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageReleaseNotes>Reverted the way Datasilk.MVC.Core View handles mustache variables that contain parameters</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.6.3</AssemblyVersion>
-    <FileVersion>1.0.6.3</FileVersion>
-    <Version>1.0.6.3</Version>
+    <AssemblyVersion>1.0.7.0</AssemblyVersion>
+    <FileVersion>1.0.7.0</FileVersion>
+    <Version>1.0.7.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +26,7 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="Datasilk.Core.DOM" Version="1.0.3" />
-    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.6.5" />
+    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.7" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 

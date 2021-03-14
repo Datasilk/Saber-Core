@@ -10,6 +10,8 @@ namespace Saber.Core
         string Email { get; set; }
         string Name { get; set; }
         bool Photo { get; set; }
+        bool IsAdmin { get; set; }
+        bool PublicApi { get; set; }
         DateTime DateCreated { get; set; }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace Saber.Core
 
         IUser SetContext(HttpContext context);
         void SetLanguage(string language); 
-        void LogIn(int userId, string email, string name, DateTime datecreated, bool photo = false);
+        void LogIn(int userId, string email, string name, DateTime datecreated, bool photo = false, bool isAdmin = false, bool publicApi = false);
         void LogOut();
         void Save(bool changed = false);
 

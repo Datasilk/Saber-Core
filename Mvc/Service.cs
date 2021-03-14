@@ -20,12 +20,9 @@ namespace Saber.Core
         protected IUser user;
         public virtual IUser User{ get; set; }
 
-        public void Init()
+        public virtual void Init()
         {
-            if (App.Environment == Environment.development)
-            {
-                ViewCache.Clear();
-            }
+            
         }
 
         public override void Dispose()
@@ -48,19 +45,7 @@ namespace Saber.Core
             return JsonResponse(new Response(html, Css.ToString() + Scripts.ToString()));
         }
 
-        public bool CheckSecurity(string key = "")
-        {
-            if (User.UserId == 1) { return true; }
-            if (key != "" && User.UserId > 0 && !User.Keys.Any(a => a.Key == key && a.Value == true))
-            {
-                return false;
-            }
-            else if (key == "" && User.UserId <= 0)
-            {
-                return false;
-            }
-            return true;
-        }
+        public virtual bool CheckSecurity(string key = "") { return false; }
 
         public string Success()
         {
@@ -105,5 +90,30 @@ namespace Saber.Core
             Resources.Add(url);
             return false;
         }
+
+        #region "Public API"
+
+        private static List<ApiKey> apikeys;
+
+        public static List<ApiKey> ApiKeys
+        {
+            set
+            {
+                //securely set the Public API key so that vendors do not have access to it
+                apikeys = value;
+            }
+        }
+
+        public static bool CheckApiKey(string key)
+        {
+            return apikeys.Any(a => a.Key == key);
+        }
+
+        public static string GetApiFromKey(string key)
+        {
+            return apikeys.Where(a => a.Key == key).FirstOrDefault()?.Name ?? "";
+        }
+
+        #endregion
     }
 }
