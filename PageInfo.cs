@@ -11,7 +11,7 @@ namespace Saber.Core
         public static string[] GetRelativePath(string path)
         {
             if(path == "") { return new string[] { }; }
-            var paths = path.Split('/').Where(a => a != "").ToArray();
+            var paths = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
 
             //translate root path to relative path
             if(paths[0] == "root")
@@ -37,6 +37,18 @@ namespace Saber.Core
                         break;
                     default:
                         paths[0] = "/Content/pages";
+                        break;
+                }
+            }
+            else if (paths[0].ToLower() != "content")
+            {
+                switch (paths[0].ToLower())
+                {
+                    case "temp":
+                        return new string[] { };
+                    default:
+                        path = "Content/" + path;
+                        paths = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
                         break;
                 }
             }
