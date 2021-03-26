@@ -109,9 +109,9 @@ namespace Saber.Core
             return apikeys.Any(a => a.Key == key);
         }
 
-        public static string GetApiFromKey(string key)
+        public static string GetClientIDFromKey(string key)
         {
-            return apikeys.Where(a => a.Key == key).FirstOrDefault()?.Name ?? "";
+            return apikeys.Where(a => a.Key == key).FirstOrDefault()?.Client_ID ?? "";
         }
 
         #endregion
