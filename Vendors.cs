@@ -32,6 +32,7 @@ namespace Saber.Core
         public string DLL { get; set; }
         public string Assembly { get; set; }
         public string Path { get; set; }
+        public Type Type { get; set; }
         public Dictionary<string, List<IVendorViewRenderer>> ViewRenderers { get; set; } = new Dictionary<string, List<IVendorViewRenderer>>();
         public Dictionary<string, Models.VendorContentFieldInfo> ContentFields { get; set; } = new Dictionary<string, Models.VendorContentFieldInfo>();
         public Dictionary<string, Type> Controllers { get; set; } = new Dictionary<string, Type>();
@@ -44,6 +45,7 @@ namespace Saber.Core
         public Dictionary<string, IVendorEmailClient> EmailClients { get; set; } = new Dictionary<string, IVendorEmailClient>();
         public Dictionary<string, EmailType> EmailTypes { get; set; } = new Dictionary<string, EmailType>();
         public List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
+        public List<Models.PublicApiInfo> PublicApis { get; set; } = new List<Models.PublicApiInfo>();
     }
 
     public class DataSourceInfo

@@ -11,6 +11,7 @@ namespace Saber.Core
         protected StringBuilder Scripts = new StringBuilder();
         protected StringBuilder Css = new StringBuilder();
         protected List<string> Resources = new List<string>();
+        protected bool IsPublicApiRequest { get; set; } = false;
 
         public EditorType EditorUsed
         {
