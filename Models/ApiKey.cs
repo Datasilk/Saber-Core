@@ -1,4 +1,4 @@
-﻿namespace Saber.Core
+﻿namespace Saber.Models
 {
     public class ApiKey
     {

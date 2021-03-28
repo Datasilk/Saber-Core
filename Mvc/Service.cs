@@ -94,9 +94,9 @@ namespace Saber.Core
 
         #region "Public API"
 
-        private static List<ApiKey> apikeys;
+        private static List<Models.ApiKey> apikeys;
 
-        public static List<ApiKey> ApiKeys
+        public static List<Models.ApiKey> ApiKeys
         {
             set
             {
