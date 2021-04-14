@@ -20,6 +20,7 @@ namespace Saber.Core
         public static Dictionary<string, EmailType> EmailTypes { get; set; } = new Dictionary<string, EmailType>();
         public static List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
         public static List<DataSourceInfo> DataSources { get; set; } = new List<DataSourceInfo>();
+        public static List<SaberEvents> EventHandlers { get; set; } = new List<SaberEvents>();
     }
 
     public class VendorInfo : IVendorInfo
