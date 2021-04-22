@@ -6,6 +6,8 @@ namespace Saber.Core
     public static class Email
     {
 
+        public static MailAddress From { get; set; } = new MailAddress("saber@datasilk.io", "Saber");
+
         /// <summary>
         /// Create a mail message used to be sent by Saber. We do not define a From address since
         /// the preferred email client (Vendor.IVendorEmailClient) will supply a parameter for the 
@@ -19,9 +21,9 @@ namespace Saber.Core
         /// If you want your email body to display image attachments, include an HTML <img/> tag with an 
         /// href that matches your attachment file path</param>
         /// <returns></returns>
-        public static MailMessage Create(MailAddress to, string subject, string body, string[] attachments = null)
+        public static MailMessage Create(MailAddress from, MailAddress to, string subject, string body, string[] attachments = null)
         {
-            var message = new MailMessage(new MailAddress("saber@datasilk.io", "Saber"), to);
+            var message = new MailMessage(from, to);
             if(attachments != null && attachments.Length > 0)
             {
                 //include attachment data in message
@@ -35,7 +37,7 @@ namespace Saber.Core
         /// Send an email using the preferred email client based on the type of email being sent
         /// </summary>
         /// <param name="message">The message being sent</param>
-        /// <param name="type">The type of message to send. Known types are "signup" and "forgotpass", 
+        /// <param name="type">The type of message to send. Known types are "signup" and "updatepass", 
         /// but vendor plugins can contain custom message types by using Vendor.IVendorEmails.</param>
         public static void Send(MailMessage message, string type)
         {
