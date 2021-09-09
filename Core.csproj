@@ -6,20 +6,27 @@
     <RootNamespace>Saber.Core</RootNamespace>
     <Authors>Mark Entingh</Authors>
     <Company>Datasilk</Company>
-    <Description>Core MVC interfaces used in the Saber MVC website builder.</Description>
+    <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Merged Vendor package into Core since there is no need to keep them separated.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added IsPublicApiRequest to Service class</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.7.1</AssemblyVersion>
-    <FileVersion>1.0.7.1</FileVersion>
-    <Version>1.0.7.1</Version>
+    <AssemblyVersion>1.0.7.2</AssemblyVersion>
+    <FileVersion>1.0.7.2</FileVersion>
+    <Version>1.0.7.2</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
+    <Copyright>2021 Datasilk</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Core\Test\**" />
     <EmbeddedResource Remove="Core\Test\**" />
     <None Remove="Core\Test\**" />
+    <None Include="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
