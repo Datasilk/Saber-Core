@@ -19,7 +19,14 @@ namespace Saber.Core
         }
 
         protected IUser user;
-        public virtual IUser User{ get; set; }
+        public virtual IUser User
+        {
+            get
+            {
+                return Delegates.Service.GetUser(this);
+            }
+            set { user = value; }
+        }
 
         public virtual void Init()
         {
@@ -46,7 +53,10 @@ namespace Saber.Core
             return JsonResponse(new Response(html, Css.ToString() + Scripts.ToString()));
         }
 
-        public virtual bool CheckSecurity(string key = "") { return false; }
+        public virtual bool CheckSecurity(string key = "") 
+        {
+            return Delegates.Service.CheckSecurity(this, key);
+        }
 
         public string Success()
         {

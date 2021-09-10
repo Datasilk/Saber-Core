@@ -9,6 +9,20 @@ namespace Saber.Core
     /// </summary>
     public static class Delegates
     {
+        public static class Controller
+        {
+            public static Func<Core.Controller, string, bool> CheckSecurity { get; set; }
+            
+            public static Func<Core.Controller, IUser> GetUser { get; set; }
+        }
+
+        public static class Service
+        {
+            public static Func<Core.Service, string, bool> CheckSecurity { get; set; }
+
+            public static Func<Core.Service, IUser> GetUser { get; set; }
+        }
+
         public static class Email
         {
             /// <summary>

@@ -22,7 +22,13 @@ namespace Saber.Core
         }
 
         protected IUser user;
-        public virtual IUser User { get; set; }
+        public virtual IUser User { 
+            get
+            {
+                return Delegates.Controller.GetUser(this);
+            }
+            set { user = value; }
+        }
 
         public virtual void Init() { }
 
@@ -37,7 +43,7 @@ namespace Saber.Core
 
         public virtual bool CheckSecurity(string key = "")
         {
-            return true;
+            return Delegates.Controller.CheckSecurity(this, key);
         }
 
         public string AccessDenied<T>() where T : Datasilk.Core.Web.IController
