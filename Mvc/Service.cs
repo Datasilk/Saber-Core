@@ -23,14 +23,35 @@ namespace Saber.Core
         {
             get
             {
-                return Delegates.Service.GetUser(this);
+                if (user == null)
+                {
+                    user = Delegates.Service.GetUser(this);
+                }
+                return user;
             }
             set { user = value; }
         }
 
+        protected Session session;
+        public Session Session
+        {
+            get
+            {
+                if (session == null)
+                {
+                    session = Session.Create(Context);
+                }
+                return session;
+            }
+            set
+            {
+                session = value;
+            }
+        }
+
         public virtual void Init()
         {
-            
+            Delegates.Service.Init(this);
         }
 
         public override void Dispose()
@@ -40,6 +61,7 @@ namespace Saber.Core
             {
                 User.Save();
             }
+            Session.Dispose();
         }
 
         public string JsonResponse(dynamic obj)

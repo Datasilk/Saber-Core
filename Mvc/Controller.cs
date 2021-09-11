@@ -25,9 +25,30 @@ namespace Saber.Core
         public virtual IUser User { 
             get
             {
-                return Delegates.Controller.GetUser(this);
+                if(user == null)
+                {
+                    user = Delegates.Controller.GetUser(this);
+                }
+                return user;
             }
             set { user = value; }
+        }
+
+        protected Session session;
+        public Session Session
+        {
+            get
+            {
+                if (session == null)
+                {
+                    session = Session.Create(Context);
+                }
+                return session;
+            }
+            set
+            {
+                session = value;
+            }
         }
 
         public virtual void Init() { }
@@ -39,6 +60,7 @@ namespace Saber.Core
             {
                 User.Save();
             }
+            Session.Dispose();
         }
 
         public virtual bool CheckSecurity(string key = "")

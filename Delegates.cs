@@ -18,9 +18,17 @@ namespace Saber.Core
 
         public static class Service
         {
+            public static Action<Core.Service> Init { get; set; }
+
             public static Func<Core.Service, string, bool> CheckSecurity { get; set; }
 
             public static Func<Core.Service, IUser> GetUser { get; set; }
+        }
+
+        public static class Session
+        {
+            public static Func<string, int, Dictionary<string, string>> Get { get; set; }
+            public static Action<string, string, int> Set { get; set; }
         }
 
         public static class Email
