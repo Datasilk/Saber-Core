@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -36,6 +37,7 @@ namespace Saber.Core
                 contentfile = App.MapPath(ContentFile(path, "en"));
                 exists = false;
             }
+            Console.WriteLine("Found content file " + contentfile);
             var json = Cache.LoadFile(contentfile);
             if(json == "") { json = "{}"; exists = false; }
             var content = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
@@ -56,7 +58,7 @@ namespace Saber.Core
                                 }
                                 else
                                 {
-                                    if (content[d.Key] == "")
+                                    if (string.IsNullOrEmpty(content[d.Key]))
                                     {
                                         content[d.Key] = d.Value;
                                     }

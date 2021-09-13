@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -69,8 +70,13 @@ namespace Saber.Core
         {
             var paths = PageInfo.GetRelativePath(path);
             var filepath = string.Join("/", paths);
-            Cache.Remove(ContentFields.ContentFile(path, language));
+            var filename = ContentFields.ContentFile(path, language);
+            Console.WriteLine("Reset cache for " + filename);
+            Cache.Remove(filepath + ".json");
+            Cache.Remove(filename);
+            Console.WriteLine("Reset View cache for " + filepath + ".html");
             ViewCache.Remove(filepath + ".html");
+            ViewCache.Remove(filename);
         }
 
         /// <summary>

@@ -24,6 +24,7 @@ namespace Saber
                 //next, check cache
                 if (Store.ContainsKey(filename))
                 {
+                    Console.WriteLine("Found cached object for " + filename);
                     return (string)Store[filename];
                 }
             }
@@ -31,9 +32,11 @@ namespace Saber
             {
                 //finally, check file system
                 var file = File.ReadAllText(App.MapPath(filename));
+                Console.WriteLine("Opened " + filename + " file with a length of " + file.Length + " characters.");
                 if (App.Environment != Environment.development)
                 {
                     Store.Add(filename, file);
+                    Console.WriteLine("Stored contents of " + filename + " in application cache");
                 }
                 return file;
             }
@@ -43,12 +46,15 @@ namespace Saber
         public static void SaveFile(string filename, string value)
         {
             File.WriteAllText(App.MapPath(filename), value);
+            Console.WriteLine("Saved file " + filename + " to disk");
             if (Store.ContainsKey(filename))
             {
+                Console.WriteLine("Updated contents of " + filename + " in application cache");
                 Store[filename] = value;
             }
             else
             {
+                Console.WriteLine("Stored contents of " + filename + " in application cache");
                 Store.Add(filename, value);
             }
         }
