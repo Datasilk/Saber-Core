@@ -37,16 +37,16 @@ namespace Saber.Core
                 contentfile = App.MapPath(ContentFile(path, "en"));
                 exists = false;
             }
-            Console.WriteLine("Found content file " + contentfile);
-            var json = Cache.LoadFile(contentfile);
+            var json = Cache.LoadFile(ContentFile(path, language));
             if(json == "") { json = "{}"; exists = false; }
             var content = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             if (content != null) {
-                if(exists == true && language != "en")
+                if(exists == true)
                 {
                     //fill in gaps of data with English content
                     var json_en = Cache.LoadFile(ContentFile(path, "en"));
-                    if(json_en != ""){
+                    if(json_en != "")
+                    {
                         var content_en = JsonSerializer.Deserialize<Dictionary<string, string>>(json_en);
                         if (content_en != null)
                         {
