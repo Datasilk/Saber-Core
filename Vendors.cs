@@ -53,6 +53,7 @@ namespace Saber.Core
     {
         public string Key { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public IVendorDataSources Helper { get; set; }
     }
 }

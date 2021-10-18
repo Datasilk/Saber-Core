@@ -16,6 +16,11 @@ namespace Saber.Vendor
         string Prefix { get; set; }
 
         /// <summary>
+        /// A short summary of what the data sources are used for
+        /// </summary>
+        string Description { get; set; }
+
+        /// <summary>
         /// Get a list of available data sources
         /// </summary>
         /// <returns>Returns a list of key/value pairs. Keys should be alpha-numeric so they can be used within HTML element class attributes.</returns>
