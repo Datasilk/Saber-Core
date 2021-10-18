@@ -10,6 +10,7 @@ namespace Saber.Models.Website
         public List<PageTitle> PageTitles { get; set; } = new List<PageTitle>();
         public List<string> Stylesheets { get; set; } = new List<string>();
         public List<string> Scripts { get; set; } = new List<string>();
+        public Users Users { get; set; } = new Users();
     }
 
     public class Email
@@ -68,5 +69,12 @@ namespace Saber.Models.Website
     {
         public string Value { get; set; }
         public PageTitleType Type { get; set; }
+    }
+
+    public class Users
+    {
+        public int? groupId { get; set; }
+        public int? maxSignups { get; set; }
+        public int? maxSignupsMinutes { get; set; }
     }
 }
