@@ -87,9 +87,9 @@ namespace Saber.Core
         /// <param name="container">CSS selector of the HTML container that this form will be injected into. This field is passed into all vendor HTML Components found in the partial view.</param>
         /// <param name="fields">The values associated with each mustache variable in the partial view.</param>
         /// <returns>An HTML string representing the content fields form</returns>
-        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields)
+        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null)
         {
-            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields);
+            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields);
         }
     }
 }
