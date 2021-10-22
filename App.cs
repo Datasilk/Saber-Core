@@ -17,6 +17,7 @@ namespace Saber
         public static bool IsDocker { get; set; }
         public static Dictionary<string, string> Languages { get; set; }
         public static string[] ServicePaths { get; set; }
+        public static Models.Website.Settings Website { get; set; }
 
         private static string _rootPath { get; set; }
 
