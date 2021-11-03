@@ -9,11 +9,11 @@
     <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Use delegates when executing Init, CheckSecurity, and accessing the User object from a compiled vendor plugin to ensure that Saber uses Saber.Controller or Saber.Service as the executing class. Added Session class to enable SQL-based session storage.</PackageReleaseNotes>
+    <PackageReleaseNotes>Update version of Datasilk.Core.MVC to 1.0.7.5</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.7.5</AssemblyVersion>
-    <FileVersion>1.0.7.5</FileVersion>
-    <Version>1.0.7.5</Version>
+    <AssemblyVersion>1.0.7.6</AssemblyVersion>
+    <FileVersion>1.0.7.6</FileVersion>
+    <Version>1.0.7.6</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2021 Datasilk</Copyright>
