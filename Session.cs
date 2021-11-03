@@ -109,7 +109,7 @@ namespace Saber.Core
                 Delegates.Session.Set(_key, Serialize, ExpiresInMinutes);
 
                 //update cookie
-                if (_isnew)
+                if (_context.Response.HasStarted == false && _isnew)
                 {
                     var options = new CookieOptions()
                     {
