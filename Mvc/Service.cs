@@ -142,6 +142,11 @@ namespace Saber.Core
             return apikeys.Any(a => a.Key == key);
         }
 
+        public static Models.ApiKey GetApiKeyInfo(string key)
+        {
+            return apikeys.Where(a => a.Key == key).FirstOrDefault();
+        }
+
         public static string GetClientIDFromKey(string key)
         {
             return apikeys.Where(a => a.Key == key).FirstOrDefault()?.Client_ID ?? "";
