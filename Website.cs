@@ -27,6 +27,12 @@ namespace Saber.Core
             return list;
         }
 
+        public static List<string> SystemPages { get; set; } = new List<string>()
+        {
+            "access-denied", "forgotpass", "forgotpass-complete", "home", "login", "passwordreset", 
+            "resetpass", "resetpass-complete", "signup", "signup-complete"
+        };
+
         public static List<string> AllFolders()
         {
             var list = new List<string>();
