@@ -66,7 +66,7 @@ namespace Saber.Core
 
         public static class ContentFields
         {
-            public static Func<View, int, Core.ContentFields.FieldType> GetFieldType { get; set; }
+            public static Func<View, int, List<Models.ContentFieldElementInfo>, Core.ContentFields.FieldType> GetFieldType { get; set; }
             public static Func<IRequest, string, View, string, string, Dictionary<string, string>, string[], string> RenderForm {get;set;}
         }
     }

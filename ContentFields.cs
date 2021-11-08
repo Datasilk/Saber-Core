@@ -72,9 +72,9 @@ namespace Saber.Core
             return new Dictionary<string, string>();
         }
 
-        public static FieldType GetFieldType(View view, int index)
+        public static FieldType GetFieldType(View view, int index, List<Models.ContentFieldElementInfo> elemsInfo)
         {
-            return Delegates.ContentFields.GetFieldType(view, index);
+            return Delegates.ContentFields.GetFieldType(view, index, elemsInfo);
         }
 
         /// <summary>
