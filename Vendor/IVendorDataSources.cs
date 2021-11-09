@@ -29,28 +29,47 @@ namespace Saber.Vendor
         /// <summary>
         /// Get information about a specific data source
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Data Source key</param>
         /// <returns></returns>
         DataSource Get(string key);
 
         /// <summary>
+        /// Create a new record in your data source
+        /// </summary>
+        /// <param name="Request">Current request context</param>
+        /// <param name="key">Data Source key</param>
+        /// <param name="columns"></param>
+        void Create(IRequest Request, string key, Dictionary<string, string> columns);
+
+        /// <summary>
+        /// Update an existing record in your data source
+        /// </summary>
+        /// <param name="Request">Current request context</param>
+        /// <param name="key">Data Source key</param>
+        /// <param name="id">ID of the record we will be updating</param>
+        /// <param name="columns"></param>
+        void Update(IRequest Request, string key, string id, Dictionary<string, string> columns);
+
+        /// <summary>
         /// Returns a list of filtered data from a data source
         /// </summary>
-        /// <param name="key">The name of the data source to get</param>
+        /// <param name="Request">Current request context</param>
+        /// <param name="key">Data Source key</param>
         /// <param name="start">The starting row to get</param>
         /// <param name="length">The amount of rows to get. Make sure to return 1 extra row of data to signify that there is at least 1 more page of rows in the data source filter that can be viewed (e.g. length + 1 = 10 + 1 = 11 rows)</param>
         /// <param name="lang">The language to use when accessing your data source</param>
         /// <param name="filter">The filter to apply to the data source</param>
         /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
-        List<Dictionary<string, string>> Filter(string key, int start = 1, int length = 0, string lang = "en", Dictionary<string, object> filter = null);
+        List<Dictionary<string, string>> Filter(IRequest Request, string key, int start = 1, int length = 0, string lang = "en", Dictionary<string, object> filter = null);
 
         /// <summary>
         /// Display an HTML form used to filter data from the selected data source
         /// </summary>
-        /// <param name="key">The name of the data source to display an HTML form for</param>
+        /// <param name="Request">Current request context</param>
+        /// <param name="key">Data Source key</param>
         /// <param name="request">The current request, used to include JavaScript & CSS for the HTML form. Use request.AddScript or request.AddCSS to include a file or and script tags to request.Scripts or append style tags to request.CSS.</param>
         /// <returns></returns>
-        DataSourceFilterForm RenderFilters(string key, IRequest request, Dictionary<string, object> filter = null);
+        DataSourceFilterForm RenderFilters(IRequest request, string key, Dictionary<string, string> filter = null);
     }
 
     public class DataSourceFilterForm
