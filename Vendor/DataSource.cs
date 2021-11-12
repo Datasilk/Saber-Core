@@ -1,4 +1,8 @@
-﻿namespace Saber.Vendor
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+
+namespace Saber.Vendor
 {
     public class DataSource
     {
@@ -19,6 +23,59 @@
             Float = 2,
             DateTime = 3,
             Boolean = 4,
+        }
+
+        public enum FilterMatchType
+        {
+            StartsWith = 0,
+            EndsWith = 1,
+            Contains = 2,
+            Equals = 3,
+            GreaterThan = 4,
+            GreaterEqualTo = 5,
+            LessThan = 6,
+            LessThanEqualTo = 7
+        }
+
+        [Serializable]
+        [XmlRoot("group")]
+        public class FilterGroup
+        {
+            [XmlElement("element")]
+            public List<FilterElement> Elements { get; set; }
+            [XmlElement("groups")]
+            public List<FilterGroup> Groups { get; set; }
+        }
+        public class FilterElement
+        {
+            [XmlElement("column")]
+            public string Column { get; set; }
+            [XmlElement("match")]
+            public FilterMatchType Match { get; set; }
+            [XmlElement("value")]
+            public string Value { get; set; }
+            /// <summary>
+            /// To map your filter to a request parameter (querystring or multi-part form data), 
+            /// define the name for your querystring parameter.
+            /// </summary>
+            [XmlIgnore]
+            public string QueryName { get; set; }
+        }
+
+        public enum OrderByDirection
+        {
+            Ascending = 0,
+            Descending = 1
+        }
+
+        [Serializable]
+        [XmlRoot("sort")]
+        public class OrderBy
+        {
+            [XmlElement("column")]
+            public string Column { get; set; }
+            [XmlElement("by")]
+            public OrderByDirection Direction { get; set; }
         }
     }
 }

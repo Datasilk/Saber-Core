@@ -12,10 +12,12 @@ namespace Saber.Core
             vendor = 0,
             block = 1,
             text = 2,
-            image = 3,
-            partial = 4,
-            linebreak = 5,
-            list = 6
+            number = 3,
+            image = 4,
+            partial = 5,
+            linebreak = 6,
+            list = 7,
+            datetime = 8
         }
 
         public static string ContentFile(string path, string language)
@@ -34,10 +36,9 @@ namespace Saber.Core
             var exists = true;
             if (!File.Exists(contentfile))
             {
-                contentfile = App.MapPath(ContentFile(path, "en"));
                 exists = false;
             }
-            var json = Cache.LoadFile(ContentFile(path, language));
+            var json = Cache.LoadFile(contentfile);
             if(json == "") { json = "{}"; exists = false; }
             var content = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             if (content != null) {
@@ -87,9 +88,9 @@ namespace Saber.Core
         /// <param name="container">CSS selector of the HTML container that this form will be injected into. This field is passed into all vendor HTML Components found in the partial view.</param>
         /// <param name="fields">The values associated with each mustache variable in the partial view.</param>
         /// <returns>An HTML string representing the content fields form</returns>
-        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null)
+        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null, Dictionary<string, ContentFields.FieldType> fieldTypes = null)
         {
-            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields);
+            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields, fieldTypes);
         }
     }
 }
