@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Saber.Core;
 
 namespace Saber.Vendor
 {
@@ -37,7 +38,17 @@ namespace Saber.Vendor
             LessThanEqualTo = 7
         }
 
-        [Serializable]
+        [XmlRoot("groups")]
+        public class FilterGroups: List<FilterGroup> {
+            public FilterGroups(List<FilterGroup> group)
+            {
+                foreach(var g in group)
+                {
+                    Add(g);
+                }
+            }
+        }
+
         [XmlRoot("group")]
         public class FilterGroup
         {
@@ -68,6 +79,18 @@ namespace Saber.Vendor
             Descending = 1
         }
 
+        [XmlRoot("orderby")]
+        public class OrderByList : List<OrderBy>
+        {
+            public OrderByList(List<OrderBy> orderby)
+            {
+                foreach (var o in orderby)
+                {
+                    Add(o);
+                }
+            }
+        }
+
         [Serializable]
         [XmlRoot("sort")]
         public class OrderBy
@@ -76,6 +99,16 @@ namespace Saber.Vendor
             public string Column { get; set; }
             [XmlElement("by")]
             public OrderByDirection Direction { get; set; }
+        }
+
+        public static string RenderFilters(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)
+        {
+            return Delegates.DataSources.RenderFilters(request, datasource, filters);
+        }
+
+        public static string RenderFilterGroups(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)
+        {
+            return Delegates.DataSources.RenderFilterGroups(request, datasource, filters);
         }
     }
 }
