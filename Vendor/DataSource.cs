@@ -17,38 +17,63 @@ namespace Saber.Vendor
             public DataType DataType { get; set; }
         }
 
+        [Serializable]
         public enum DataType
         {
+            [XmlEnum("0")]
             Text = 0,
+            [XmlEnum("1")]
             Number = 1,
+            [XmlEnum("2")]
             Float = 2,
+            [XmlEnum("3")]
             DateTime = 3,
+            [XmlEnum("4")]
             Boolean = 4,
         }
 
+        [Serializable]
         public enum FilterMatchType
         {
+            [XmlEnum("0")]
             StartsWith = 0,
+            [XmlEnum("1")]
             EndsWith = 1,
+            [XmlEnum("2")]
             Contains = 2,
+            [XmlEnum("3")]
             Equals = 3,
+            [XmlEnum("4")]
             GreaterThan = 4,
+            [XmlEnum("5")]
             GreaterEqualTo = 5,
+            [XmlEnum("6")]
             LessThan = 6,
+            [XmlEnum("7")]
             LessThanEqualTo = 7
         }
 
-        [XmlRoot("groups")]
-        public class FilterGroups: List<FilterGroup> {
-            public FilterGroups(List<FilterGroup> group)
-            {
-                foreach(var g in group)
-                {
-                    Add(g);
-                }
-            }
+        [Serializable]
+        public enum GroupMatchType
+        {
+            [XmlEnum("0")]
+            All = 0,
+            [XmlEnum("1")]
+            Any = 1
         }
 
+        /// <summary>
+        /// Use to serialize groups into XML for SQL
+        /// </summary>
+        [Serializable]
+        [XmlRoot("groups")]
+        public class XmlFilterGroups
+        {
+            [XmlElement("group")]
+            public List<FilterGroup> Group { get; set; }
+        }
+
+        [Serializable]
         [XmlRoot("group")]
         public class FilterGroup
         {
@@ -56,14 +81,16 @@ namespace Saber.Vendor
             public List<FilterElement> Elements { get; set; }
             [XmlElement("groups")]
             public List<FilterGroup> Groups { get; set; }
+            [XmlAttribute("match")]
+            public GroupMatchType Match { get; set; }
         }
         public class FilterElement
         {
-            [XmlElement("column")]
+            [XmlAttribute("column")]
             public string Column { get; set; }
-            [XmlElement("match")]
+            [XmlAttribute("match")]
             public FilterMatchType Match { get; set; }
-            [XmlElement("value")]
+            [XmlAttribute("value")]
             public string Value { get; set; }
             /// <summary>
             /// To map your filter to a request parameter (querystring or multi-part form data), 
@@ -80,24 +107,19 @@ namespace Saber.Vendor
         }
 
         [XmlRoot("orderby")]
-        public class OrderByList : List<OrderBy>
+        public class OrderByList
         {
-            public OrderByList(List<OrderBy> orderby)
-            {
-                foreach (var o in orderby)
-                {
-                    Add(o);
-                }
-            }
+            [XmlElement("sort")]
+            public List<OrderBy> OrderBy { get; set; }
         }
 
         [Serializable]
         [XmlRoot("sort")]
         public class OrderBy
         {
-            [XmlElement("column")]
+            [XmlAttribute("column")]
             public string Column { get; set; }
-            [XmlElement("by")]
+            [XmlAttribute("by")]
             public OrderByDirection Direction { get; set; }
         }
 
@@ -106,9 +128,14 @@ namespace Saber.Vendor
             return Delegates.DataSources.RenderFilters(request, datasource, filters);
         }
 
-        public static string RenderFilterGroups(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)
+        public static string RenderFilterGroups(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters, int depth = 0)
         {
-            return Delegates.DataSources.RenderFilterGroups(request, datasource, filters);
+            return Delegates.DataSources.RenderFilterGroups(request, datasource, filters, depth);
+        }
+
+        public static string RenderFilter(IRequest request, DataSource datasource, FilterElement filter)
+        {
+            return Delegates.DataSources.RenderFilter(request, datasource, filter);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -40,7 +39,7 @@ namespace Saber.Core
             }
             var json = Cache.LoadFile(contentfile);
             if(json == "") { json = "{}"; exists = false; }
-            var content = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            var content = Deserialize(json);
             if (content != null) {
                 if(exists == true)
                 {
@@ -48,7 +47,7 @@ namespace Saber.Core
                     var json_en = Cache.LoadFile(ContentFile(path, "en"));
                     if(json_en != "")
                     {
-                        var content_en = JsonSerializer.Deserialize<Dictionary<string, string>>(json_en);
+                        var content_en = Deserialize(json_en);
                         if (content_en != null)
                         {
                             foreach (var d in content_en)
@@ -91,6 +90,16 @@ namespace Saber.Core
         public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null, Dictionary<string, ContentFields.FieldType> fieldTypes = null)
         {
             return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields, fieldTypes);
+        }
+
+        public static string Serialize(Dictionary<string, string> fields)
+        {
+            return JsonSerializer.Serialize(fields).Replace("\\u0022", "_q_");
+        }
+
+        public static Dictionary<string, string> Deserialize(string fields)
+        {
+            return JsonSerializer.Deserialize<Dictionary<string, string>>(fields.Replace("_q_", "\\u0022"));
         }
     }
 }

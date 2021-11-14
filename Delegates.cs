@@ -72,8 +72,9 @@ namespace Saber.Core
 
         public static class DataSources
         {
+            public static Func<IRequest, Vendor.DataSource, Vendor.DataSource.FilterElement, string> RenderFilter { get; set; }
             public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, string> RenderFilters { get; set; }
-            public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, string> RenderFilterGroups { get; set; }
+            public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, int, string> RenderFilterGroups { get; set; }
         }
     }
 }
