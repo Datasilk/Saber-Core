@@ -100,12 +100,16 @@ namespace Saber.Vendor
             public string QueryName { get; set; }
         }
 
+        [Serializable]
         public enum OrderByDirection
         {
             Ascending = 0,
             Descending = 1
         }
 
+        /// <summary>
+        /// Use to serialize orderby into XML for SQL
+        /// </summary>
         [XmlRoot("orderby")]
         public class OrderByList
         {
@@ -123,6 +127,15 @@ namespace Saber.Vendor
             public OrderByDirection Direction { get; set; }
         }
 
+        public class PositionSettings
+        {
+            public int Start { get; set; }
+            public string StartQuery { get; set; }
+            public int Length { get; set; }
+            public string LengthQuery { get; set; }
+            public bool Paging { get; set; }
+        }
+
         public static string RenderFilters(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)
         {
             return Delegates.DataSources.RenderFilters(request, datasource, filters);
@@ -136,6 +149,21 @@ namespace Saber.Vendor
         public static string RenderFilter(IRequest request, DataSource datasource, FilterElement filter)
         {
             return Delegates.DataSources.RenderFilter(request, datasource, filter);
+        }
+
+        public static string RenderOrderBy(OrderBy orderby)
+        {
+            return Delegates.DataSources.RenderOrderBy(orderby);
+        }
+
+        public static string RenderOrderByList(DataSourceInfo datasource, List<OrderBy> orderbyList)
+        {
+            return Delegates.DataSources.RenderOrderByList(datasource, orderbyList);
+        }
+
+        public static string RenderPositionSettings(DataSourceInfo datasource, PositionSettings settings)
+        {
+            return Delegates.DataSources.RenderPositionSettings(datasource, settings);
         }
     }
 }
