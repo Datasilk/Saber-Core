@@ -67,7 +67,19 @@ namespace Saber.Core
         public static class ContentFields
         {
             public static Func<View, int, List<Models.ContentFieldElementInfo>, Core.ContentFields.FieldType> GetFieldType { get; set; }
-            public static Func<IRequest, string, View, string, string, Dictionary<string, string>, string[], string> RenderForm {get;set;}
+            public static Func<IRequest, string, View, string, string, Dictionary<string, string>, string[], Dictionary<string, Core.ContentFields.FieldType>, string> RenderForm {get;set;}
+        }
+
+        public static class DataSources
+        {
+            public static Func<IRequest, Vendor.DataSource, Vendor.DataSource.FilterElement, string> RenderFilter { get; set; }
+            public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, string> RenderFilters { get; set; }
+            public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, int, string> RenderFilterGroups { get; set; }
+            
+            public static Func<Vendor.DataSource.OrderBy, string> RenderOrderBy { get; set; }
+            public static Func<DataSourceInfo, List<Vendor.DataSource.OrderBy>, string> RenderOrderByList { get; set; }
+
+            public static Func<DataSourceInfo, Vendor.DataSource.PositionSettings, string> RenderPositionSettings { get; set; }
         }
     }
 }

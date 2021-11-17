@@ -42,9 +42,14 @@ namespace Saber.Vendor
         public string Website { get; set; } = "";
 
         /// <summary>
-        /// If your HTML component acts as a mustache variable block, set Block = true
+        /// Determines if your HTML component acts as a mustache variable block, set Block = true
         /// </summary>
         public bool Block { get; set; } = false;
+
+        /// <summary>
+        /// Determines if your HTML component will display a content field in the Page Content tab
+        /// </summary>
+        public bool ContentField { get; set; } = true;
 
         /// <summary>
         /// When generating a special variable using Saber's HTML Component dropdown menu, HtmlHead will be included before the mustache variable is generated

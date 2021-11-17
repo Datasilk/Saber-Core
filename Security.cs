@@ -37,6 +37,12 @@ namespace Saber.Core
             },
             new SecurityKey()
             {
+                Value = "edit-datasources",
+                Label = "Edit Data Sources",
+                Description = "Add & edit records for supported data sources"
+            },
+            new SecurityKey()
+            {
                 Value = "page-settings",
                 Label = "Page Settings",
                 Description = "Update settings for web pages, such as title, description & loaded scripts"
