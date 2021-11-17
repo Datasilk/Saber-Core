@@ -21,6 +21,7 @@ namespace Saber.Core
         public static List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
         public static List<DataSourceInfo> DataSources { get; set; } = new List<DataSourceInfo>();
         public static List<SaberEvents> EventHandlers { get; set; } = new List<SaberEvents>();
+        public static List<InternalApi> InternalApis { get; set; } = new List<InternalApi>();
     }
 
     public class VendorInfo : IVendorInfo
