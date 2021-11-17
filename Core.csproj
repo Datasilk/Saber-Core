@@ -11,9 +11,9 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageReleaseNotes>Added Internal API system</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.7.7</AssemblyVersion>
-    <FileVersion>1.0.7.7</FileVersion>
-    <Version>1.0.7.7</Version>
+    <AssemblyVersion>1.0.7.8</AssemblyVersion>
+    <FileVersion>1.0.7.8</FileVersion>
+    <Version>1.0.7.8</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2021 Datasilk</Copyright>
