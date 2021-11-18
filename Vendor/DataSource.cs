@@ -10,11 +10,25 @@ namespace Saber.Vendor
         public string Key { get; set; }
         public string Name { get; set; }
         public Column[] Columns { get; set; }
+        public Relationship[] Relationships { get; set; }
 
         public class Column
         {
             public string Name { get; set; }
             public DataType DataType { get; set; }
+        }
+
+        public class Relationship
+        {
+            public DataSource Child { get; set; }
+            /// <summary>
+            /// Name of the List Component found in the Parent HTML View
+            /// </summary>
+            public string ListComponent { get; set; }
+            /// <summary>
+            /// The column name in the child Data Source that is used to store the related parent ID
+            /// </summary>
+            public string ChildColumn{ get; set; }
         }
 
         [Serializable]
@@ -135,6 +149,11 @@ namespace Saber.Vendor
             public string LengthQuery { get; set; }
             public bool Paging { get; set; }
         }
+
+        /// <summary>
+        /// Executed after all Data Sources are instantiated on Startup
+        /// </summary>
+        public virtual void Init() { }
 
         public static string RenderFilters(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)
         {
