@@ -20,6 +20,13 @@ namespace Saber.Vendor
 
         public class Relationship
         {
+            /// <summary>
+            /// The parent Data Source key
+            /// </summary>
+            public string Key { get; set; }
+
+            public string ChildKey { get; set; }
+
             public DataSource Child { get; set; }
             /// <summary>
             /// Name of the List Component found in the Parent HTML View
@@ -29,6 +36,8 @@ namespace Saber.Vendor
             /// The column name in the child Data Source that is used to store the related parent ID
             /// </summary>
             public string ChildColumn{ get; set; }
+
+            public string ParentTable { get; set; }
         }
 
         [Serializable]
@@ -149,11 +158,6 @@ namespace Saber.Vendor
             public string LengthQuery { get; set; }
             public bool Paging { get; set; }
         }
-
-        /// <summary>
-        /// Executed after all Data Sources are instantiated on Startup
-        /// </summary>
-        public virtual void Init() { }
 
         public static string RenderFilters(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)
         {

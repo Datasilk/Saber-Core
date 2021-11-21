@@ -13,7 +13,7 @@ namespace Saber.Vendor
         /// Returns a list of Key/Value pairs to be injected into the view, the key being the variable name (including prefix), 
         /// and the value being the rendered HTML to replace the mustache variable with.
         /// </summary>
-        public Func<View, IRequest, Dictionary<string, string>, string, string, string, List<KeyValuePair<string, string>>> Render { get; set; }
+        public Func<View, IRequest, Dictionary<string, string>, Dictionary<string, object>, string, string, List<KeyValuePair<string, string>>> Render { get; set; }
 
         /// <summary>
         /// key that is used to identify the html mustache variable (e.g. "my-plugin" would be used for variable {{my-plugin}} )
