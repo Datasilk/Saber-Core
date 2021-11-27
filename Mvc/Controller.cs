@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Datasilk.Core.Web;
 
@@ -124,6 +125,12 @@ namespace Saber.Core
             if (Resources.Contains(url)) { return true; }
             Resources.Add(url);
             return false;
+        }
+
+        string IRequest.AlterUrl(Dictionary<string, string> parameters)
+        {
+            var query = Context.Request.Query.Join(parameters, a => a.Key, a => a.Key, (a, b) => b).ToDictionary(a => a.Key, a => a.Value);
+            return "/" + string.Join("/", PathParts) + (query.Keys.Count > 0 ? "?" + string.Join("&", query.Select(a => a.Key + "=" + a.Value)) : "");
         }
 
         public virtual string Render(string body = "") { return body; }

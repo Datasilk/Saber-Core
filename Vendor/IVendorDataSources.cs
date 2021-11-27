@@ -69,7 +69,7 @@ namespace Saber.Vendor
         List<Dictionary<string, string>> Filter(IRequest request, string key, int start = 1, int length = 0, string lang = "en", List<DataSource.FilterGroup> filter = null, List<DataSource.OrderBy> orderBy = null);
 
         /// <summary>
-        /// Returns a Dictionary of dataset keys and associated records based on a parent data set and it's relationships with other datasets
+        /// Returns a Dictionary of data source keys and associated records based on a parent data set and it's relationships with other datasets
         /// </summary>
         /// <param name="Request">Current request context</param>
         /// <param name="key">Data Source key</param>
@@ -81,5 +81,28 @@ namespace Saber.Vendor
         /// <param name="childKeys">Specify which child data sets you'd like to query. If null, query all matching child data sets found in the relationships list</param>
         /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
         Dictionary<string, List<Dictionary<string, string>>> Filter(IRequest request, string key, string lang = "en", Dictionary<string, DataSource.PositionSettings> positions = null, Dictionary<string, List<DataSource.FilterGroup>> filter = null, Dictionary<string, List<DataSource.OrderBy>> orderBy = null, string[] childKeys = null);
+
+        /// <summary>
+        /// Returns total number of filtered records
+        /// </summary>
+        /// <param name="Request">Current request context</param>
+        /// <param name="key">Data Source key</param>
+        /// <param name="lang">The language to use when accessing your data source</param>
+        /// <param name="filter">The filter to apply to the data source</param>
+        /// <param name="orderBy">The columns used to sort the records by</param>
+        /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
+        int FilterTotal(IRequest request, string key, string lang = "en", List<DataSource.FilterGroup> filter = null, List<DataSource.OrderBy> orderBy = null);
+
+        /// <summary>
+        /// Returns a Dictionary of data source keys and associated total number of filtered records
+        /// </summary>
+        /// <param name="Request">Current request context</param>
+        /// <param name="key">Data Source key</param>
+        /// <param name="lang">The language to use when accessing your data source</param>
+        /// <param name="filter">The filter to apply to the data source</param>
+        /// <param name="orderBy">The columns used to sort the records by</param>
+        /// <param name="childKeys">Specify which child data sets you'd like to query. If null, query all matching child data sets found in the relationships list</param>
+        /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
+        Dictionary<string, int> FilterTotal(IRequest request, string key, string lang = "en", Dictionary<string, List<DataSource.FilterGroup>> filter = null, Dictionary<string, List<DataSource.OrderBy>> orderBy = null, string[] childKeys = null);
     }
 }

@@ -124,6 +124,12 @@ namespace Saber.Core
             return false;
         }
 
+        string IRequest.AlterUrl(Dictionary<string, string> parameters)
+        {
+            var query = Context.Request.Query.Join(parameters, a => a.Key, a => a.Key, (a, b) => b).ToDictionary(a => a.Key, a => a.Value);
+            return "/" + string.Join("/", PathParts) + (query.Keys.Count > 0 ? "?" + string.Join("&", query.Select(a => a.Key + "=" + a.Value)) : "");
+        }
+
         #region "Public API"
 
         private static List<Models.ApiKey> apikeys;
