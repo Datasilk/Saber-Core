@@ -22,6 +22,7 @@ namespace Saber.Core
         public static List<DataSourceInfo> DataSources { get; set; } = new List<DataSourceInfo>();
         public static List<SaberEvents> EventHandlers { get; set; } = new List<SaberEvents>();
         public static List<InternalApi> InternalApis { get; set; } = new List<InternalApi>();
+        public static List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();
     }
 
     public class VendorInfo : IVendorInfo
@@ -48,6 +49,7 @@ namespace Saber.Core
         public Dictionary<string, EmailType> EmailTypes { get; set; } = new Dictionary<string, EmailType>();
         public List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
         public List<Models.PublicApiInfo> PublicApis { get; set; } = new List<Models.PublicApiInfo>();
+        public List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();
     }
 
     public class DataSourceInfo
