@@ -10,37 +10,27 @@ namespace Saber.Core
 
         public static string[] GetRelativePath(string path)
         {
-            if(path == "") { return new string[] { }; }
+            //if(path == "") { return new string[] { }; }
             var paths = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
 
             //translate root path to relative path
-            if(paths[0] == "root")
+            if(paths.Length > 0 && paths[0] == "root")
             {
-                return new string[] { "" };
+                return new string[] { };
             }
-            else if (paths[0].ToLower() == "wwwroot")
+            else if (paths.Length > 0 && paths[0].ToLower() == "wwwroot")
             {
                 paths[0] = "/wwwroot";
             }
-            else if( paths[0].ToLower() == "content" && paths.Length > 1)
+            else if(paths.Length > 0 && paths[0].ToLower() == "content" && paths.Length > 1)
             {
                 switch (paths[1].ToLower())
                 {
-                    case "pages":
-                        paths[0] = "/Content";
-                        break;
-                    case "partials":
-                        paths[0] = "/Content";
-                        break;
-                    case "website.less":
-                        paths[0] = "/Content";
-                        break;
-                    default:
-                        paths[0] = "/Content/pages";
-                        break;
+                    case "temp":
+                        return new string[] { };
                 }
             }
-            else if (paths[0].ToLower() != "content")
+            else if (paths.Length > 0 && paths[0].ToLower() != "content")
             {
                 switch (paths[0].ToLower())
                 {
@@ -51,6 +41,11 @@ namespace Saber.Core
                         paths = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
                         break;
                 }
+            }
+            else if(path == "")
+            {
+                path = "Content/" + path;
+                paths = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
             }
             else
             {
