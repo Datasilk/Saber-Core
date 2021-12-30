@@ -16,7 +16,7 @@ namespace Saber.Core
             //translate root path to relative path
             if(paths.Length > 0 && paths[0] == "root")
             {
-                return new string[] { };
+                return new string[] { "" };
             }
             else if (paths.Length > 0 && paths[0].ToLower() == "wwwroot")
             {
