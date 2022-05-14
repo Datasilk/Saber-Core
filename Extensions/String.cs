@@ -522,7 +522,7 @@ namespace Saber.Core.Extensions.Strings
 
     public static class Web
     {
-        public static string CleanUrl(this string url, bool queryString = true, bool hash = false, string[] removeFromQuery = null)
+        public static string CleanUrl(this string url, bool queryString = true, bool hash = false, string[] removeFromQuery = null, string[] onlyKeepQueries = null)
         {
             var u = url.Split(new char[] { '?' }, 2);
             var result = u[0];
@@ -552,7 +552,7 @@ namespace Saber.Core.Extensions.Strings
                 {
                     //get key values
                     var kv = u[1].ToLower().Split('&');
-                    var k2v = new string[] { };
+                    string[] k2v;
                     var newkeys = "";
                     foreach (var k in kv)
                     {
@@ -571,6 +571,35 @@ namespace Saber.Core.Extensions.Strings
                     }
                     if (newkeys != "") { newkeys = "?" + newkeys; }
                     result = u[0] + newkeys;
+                }
+            }
+
+            if (onlyKeepQueries != null)
+            {
+                //remove specific query keys from url
+                u = result.Split(new char[] { '?' }, 2);
+                if (u.Length == 2)
+                {
+                    //get key values
+                    var kv = u[1].ToLower().Split('&');
+                    string[] k2v;
+                    var newkeys = "";
+                    foreach (var k in kv)
+                    {
+                        if (k != "")
+                        {
+                            if (k.IndexOf('=') > 0)
+                            {
+                                k2v = k.Split(new char[] { '=' }, 2);
+                                if (onlyKeepQueries.Any(a => (k2v[0] + "=").Contains(a)))
+                                {
+                                    newkeys += (newkeys.Length > 0 ? "&" : "") + k2v[0] + "=" + k2v[1];
+                                }
+                            }
+                        }
+
+                    }
+                    result = u[0] + (newkeys != "" ? "?" + newkeys : "");
                 }
             }
 
