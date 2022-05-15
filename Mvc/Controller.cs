@@ -134,5 +134,11 @@ namespace Saber.Core
         }
 
         public virtual string Render(string body = "") { return body; }
+
+        public void AddScriptBlock(string javascript = "", string id = "")
+        {
+            if (ContainsResource(id)) { return; }
+            Scripts.Append("<script language=\"javascript\"" + (id != "" ? " id=\"" + id + "\"" : "") + " >" + javascript + "</script>");
+        }
     }
 }

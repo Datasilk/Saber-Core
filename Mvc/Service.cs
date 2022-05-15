@@ -111,6 +111,12 @@ namespace Saber.Core
             Scripts.Append("S.util.js.load('" + url + "', '" + id + "', " + (callback != "" ? callback : "null") + ");");
         }
 
+        public void AddScriptBlock(string javascript = "", string id = "")
+        {
+            if (ContainsResource(id)) { return; }
+            Scripts.Append(javascript);
+        }
+
         public void AddCSS(string url, string id = "")
         {
             if (ContainsResource(url)) { return; }

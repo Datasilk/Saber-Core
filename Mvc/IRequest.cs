@@ -7,6 +7,7 @@ namespace Saber.Core
         IUser User { get; set; }
         bool CheckSecurity(string key = "");
         void AddScript(string url, string id = "", string callback = "");
+        void AddScriptBlock(string javascript = "", string id = "");
         void AddCSS(string url, string id = "");
         string AlterUrl(Dictionary<string, string> parameters);
     }
