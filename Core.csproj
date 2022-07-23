@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Saber.Core</AssemblyName>
     <RootNamespace>Saber.Core</RootNamespace>
     <Authors>Mark Entingh</Authors>
@@ -30,7 +30,7 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Datasilk.Core.DOM" Version="1.0.3" />
-    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.7.6" />
+    <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.7.9" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 

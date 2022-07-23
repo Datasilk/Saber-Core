@@ -11,8 +11,13 @@ namespace Saber.Core
         public static List<string> AllFiles(string[] include = null)
         {
             var list = new List<string>();
-            RecurseDirectories(list, "/Content/pages");
-            RecurseDirectories(list, "/Content/partials");
+            var allfolders = AllFolders();
+            foreach (var folder in allfolders)
+            {
+                RecurseDirectories(list, folder.Replace("\\", "/").Replace(App.RootPath, ""));
+            }
+            
+            //RecurseDirectories(list, "/Content/partials");
             list.Add(App.MapPath("/Content/website.less"));
             list.Add(App.MapPath("/Content/website.json"));
             RecurseDirectories(list, "/wwwroot", new string[] { App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
