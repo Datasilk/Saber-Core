@@ -650,18 +650,21 @@ namespace Saber.Core.Extensions.Strings
                     return string.Join(".", tmpDomain); ;
                 }
                 return tmpDomain[1] + "." + tmpDomain[2];
+            }else if(tmpDomain.Length <= 1)
+            {
+                return "";
             }
-            return string.Join(".", tmpDomain);
+            var domain = string.Join(".", tmpDomain);
+            //find any unwanted characters in the domain
+            if(domain.Any(a => ",/?;:'\"[{]}=+-_)(*&^%$#@!~`".Contains(a))) { return ""; }
+            if (domain[0] == '.') { return ""; }
+            return domain;
         }
 
         public static string GetSubDomainAndDomain(this string url)
         {
-            string strDomain = url.Replace("http://", "").Replace("https://", "").Replace("www.", "").Split('/')[0];
-            if (strDomain.IndexOf("localhost") >= 0 | strDomain.IndexOf("192.168") >= 0)
-            {
-                strDomain = "datasilk.io";
-            }
-            return strDomain.Replace("/", "");
+            return url.Replace("http://", "").Replace("https://", "").Replace("www.", "")
+                .Split('/')[0].Split(':')[0].Replace("/", "");
         }
 
         public static string[] GetDomainParts(this string url)
