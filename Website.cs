@@ -110,6 +110,16 @@ namespace Saber.Core
             Delegates.Website.CopyTempWebsite();
         }
 
+        /// <summary>
+        /// Import contents of a zip file into the current Saber website folders (Content & wwwroot folders). The zip file must
+        /// adhere to the requirements of a Saber website folder structure
+        /// </summary>
+        /// <param name="zip"></param>
+        public static void ImportWebsite(Stream zip)
+        {
+            Delegates.Website.ImportWebsite(zip);
+        }
+
         public static class Settings
         {
             /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Mail;
 
 namespace Saber.Core
@@ -50,6 +51,16 @@ namespace Saber.Core
             /// Used by Saber to delegate execution of Core.Website.CopyTempWebsite. Please do not modify this field.
             /// </summary>
             public static Action CopyTempWebsite { get; set; }
+
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.ImportWebsite. Please do not modify this field.
+            /// </summary>
+            public static Action<Stream> ImportWebsite { get; set; }
+
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.ExportWebsite. Please do not modify this field.
+            /// </summary>
+            public static Func<byte[]> ExportWebsite { get; set; }
 
             public static class Settings
             {

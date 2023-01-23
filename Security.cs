@@ -70,6 +70,18 @@ namespace Saber.Core
                 Value = "manage-security",
                 Label = "Manage Security",
                 Description = "View, update, and create security groups."
+            },
+            new SecurityKey()
+            {
+                Value = "import", 
+                Label = "Import", 
+                Description = "Able to import zip files to update content on the website"
+            },
+            new SecurityKey()
+            {
+                Value = "export", 
+                Label = "Export", 
+                Description = "Able to export the existing website to zip format"
             }
         };
     }
