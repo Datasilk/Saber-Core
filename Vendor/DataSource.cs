@@ -7,15 +7,15 @@ namespace Saber.Vendor
 {
     public class DataSource
     {
-        public string Key { get; set; }
-        public string Name { get; set; }
-        public Column[] Columns { get; set; }
-        public Relationship[] Relationships { get; set; }
+        public string Key { get; set; } = "";
+        public string Name { get; set; } = "";
+        public Column[] Columns { get; set; } = new Column[0];
+        public Relationship[] Relationships { get; set; } = new Relationship[0];
 
         public class Column
         {
-            public string Name { get; set; }
-            public DataType DataType { get; set; }
+            public string Name { get; set; } = "";
+            public DataType DataType { get; set; } = DataType.Text;
         }
 
         public class Relationship
@@ -23,21 +23,21 @@ namespace Saber.Vendor
             /// <summary>
             /// The parent Data Source key
             /// </summary>
-            public string Key { get; set; }
+            public string Key { get; set; } = "";
 
-            public string ChildKey { get; set; }
+            public string ChildKey { get; set; } = "";
 
-            public DataSource Child { get; set; }
+            public DataSource Child { get; set; } = new DataSource();
             /// <summary>
             /// Name of the List Component found in the Parent HTML View
             /// </summary>
-            public string ListComponent { get; set; }
+            public string ListComponent { get; set; } = "";
             /// <summary>
             /// The column name in the child Data Source that is used to store the related parent ID
             /// </summary>
-            public string ChildColumn{ get; set; }
+            public string ChildColumn { get; set; } = "";
 
-            public string ParentTable { get; set; }
+            public string ParentTable { get; set; } = "";
         }
 
         [Serializable]
@@ -93,7 +93,7 @@ namespace Saber.Vendor
         public class XmlFilterGroups
         {
             [XmlElement("group")]
-            public List<FilterGroup> Group { get; set; }
+            public List<FilterGroup> Group { get; set; } = new List<FilterGroup>();
         }
 
         [Serializable]
@@ -101,26 +101,26 @@ namespace Saber.Vendor
         public class FilterGroup
         {
             [XmlElement("element")]
-            public List<FilterElement> Elements { get; set; }
+            public List<FilterElement> Elements { get; set; } = new List<FilterElement>();
             [XmlElement("groups")]
-            public List<FilterGroup> Groups { get; set; }
+            public List<FilterGroup> Groups { get; set; } = new List<FilterGroup>();
             [XmlAttribute("match")]
-            public GroupMatchType Match { get; set; }
+            public GroupMatchType Match { get; set; } = GroupMatchType.Any;
         }
         public class FilterElement
         {
             [XmlAttribute("column")]
-            public string Column { get; set; }
+            public string Column { get; set; } = "";
             [XmlAttribute("match")]
-            public FilterMatchType Match { get; set; }
+            public FilterMatchType Match { get; set; } = FilterMatchType.Contains;
             [XmlAttribute("value")]
-            public string Value { get; set; }
+            public string Value { get; set; } = "";
             /// <summary>
             /// To map your filter to a request parameter (querystring or multi-part form data), 
             /// define the name for your querystring parameter.
             /// </summary>
             [XmlIgnore]
-            public string QueryName { get; set; }
+            public string QueryName { get; set; } = "";
         }
 
         [Serializable]
@@ -137,7 +137,7 @@ namespace Saber.Vendor
         public class OrderByList
         {
             [XmlElement("sort")]
-            public List<OrderBy> OrderBy { get; set; }
+            public List<OrderBy> OrderBy { get; set; } = new List<OrderBy>();
         }
 
         [Serializable]
@@ -145,18 +145,18 @@ namespace Saber.Vendor
         public class OrderBy
         {
             [XmlAttribute("column")]
-            public string Column { get; set; }
+            public string Column { get; set; } = "";
             [XmlAttribute("by")]
-            public OrderByDirection Direction { get; set; }
+            public OrderByDirection Direction { get; set; } = OrderByDirection.Ascending;
         }
 
         public class PositionSettings
         {
-            public int Start { get; set; }
-            public string StartQuery { get; set; }
-            public int Length { get; set; }
-            public string LengthQuery { get; set; }
-            public bool Paging { get; set; }
+            public int Start { get; set; } = 0;
+            public string StartQuery { get; set; } = "";
+            public int Length { get; set; } = 10;
+            public string LengthQuery { get; set; } = "";
+            public bool Paging { get; set; } = true;
         }
 
         public static string RenderFilters(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters)

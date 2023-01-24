@@ -21,6 +21,12 @@ namespace Saber.Vendor
         public string Key { get; set; }
 
         /// <summary>
+        /// If true, key is a prefix and so the associated mustache variable must either use the key or use the key with a dash
+        /// and a suffix (e.g. {{list}} or {{list-users}} will generate a list component)
+        /// </summary>
+        public bool KeyIsPrefix { get; set; } = false;
+
+        /// <summary>
         /// human-readable name of html variable
         /// </summary>
         public string Name { get; set; }

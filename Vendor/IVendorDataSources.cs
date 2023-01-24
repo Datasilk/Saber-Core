@@ -6,7 +6,7 @@ namespace Saber.Vendor
     public interface IVendorDataSources
     {
         /// <summary>
-        /// Name used to prefix data source names when displaying a list of all data sources in Saber (e.g. "My Data Source")
+        /// Name used when displaying a list of all data sources in Saber (e.g. "My Data Source")
         /// </summary>
         string Vendor { get; set; }
 
@@ -80,7 +80,7 @@ namespace Saber.Vendor
         /// <param name="orderBy">The columns used to sort the records by</param>
         /// <param name="childKeys">Specify which child data sets you'd like to query. If null, query all matching child data sets found in the relationships list</param>
         /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
-        Dictionary<string, List<Dictionary<string, string>>> Filter(IRequest request, string key, string lang = "en", Dictionary<string, DataSource.PositionSettings> positions = null, Dictionary<string, List<DataSource.FilterGroup>> filter = null, Dictionary<string, List<DataSource.OrderBy>> orderBy = null, string[] childKeys = null);
+        Dictionary<string, List<Dictionary<string, string>>> Filter(IRequest request, string key, string lang = "en", Dictionary<string, DataSource.PositionSettings> positions = null, Dictionary<string, List<DataSource.FilterGroup>> filters = null, Dictionary<string, List<DataSource.OrderBy>> orderBy = null, string[] childKeys = null);
 
         /// <summary>
         /// Returns total number of filtered records
@@ -91,7 +91,7 @@ namespace Saber.Vendor
         /// <param name="filter">The filter to apply to the data source</param>
         /// <param name="orderBy">The columns used to sort the records by</param>
         /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
-        int FilterTotal(IRequest request, string key, string lang = "en", List<DataSource.FilterGroup> filter = null, List<DataSource.OrderBy> orderBy = null);
+        int FilterTotal(IRequest request, string key, string lang = "en", List<DataSource.FilterGroup> filter = null);
 
         /// <summary>
         /// Returns a Dictionary of data source keys and associated total number of filtered records
@@ -103,6 +103,6 @@ namespace Saber.Vendor
         /// <param name="orderBy">The columns used to sort the records by</param>
         /// <param name="childKeys">Specify which child data sets you'd like to query. If null, query all matching child data sets found in the relationships list</param>
         /// <returns>List of data, each item in the list contains a Dictionary of key/value pairs that represent the fields and associated data for a given row within the data source</returns>
-        Dictionary<string, int> FilterTotal(IRequest request, string key, string lang = "en", Dictionary<string, List<DataSource.FilterGroup>> filter = null, Dictionary<string, List<DataSource.OrderBy>> orderBy = null, string[] childKeys = null);
+        Dictionary<string, int> FilterTotal(IRequest request, string key, string lang = "en", Dictionary<string, List<DataSource.FilterGroup>> filters = null, string[] childKeys = null);
     }
 }
