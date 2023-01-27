@@ -23,7 +23,7 @@ namespace Saber.Core
         public static List<SaberEvents> EventHandlers { get; set; } = new List<SaberEvents>();
         public static List<InternalApi> InternalApis { get; set; } = new List<InternalApi>();
         public static List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();
-        public static List<IVendorCorsPolicy> CorsPolicies { get; set; } = new List<IVendorCorsPolicy>();
+        public static List<IVendorPageResponse> PageResponses { get; set; } = new List<IVendorPageResponse>();
     }
 
     public class VendorInfo : IVendorInfo
@@ -51,7 +51,7 @@ namespace Saber.Core
         public List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
         public List<Models.PublicApiInfo> PublicApis { get; set; } = new List<Models.PublicApiInfo>();
         public List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();
-        public List<IVendorCorsPolicy> CorsPolicies { get; set; } = new List<IVendorCorsPolicy>();
+        public List<IVendorPageResponse> PageResponses { get; set; } = new List<IVendorPageResponse>();
     }
 
     public class DataSourceInfo
