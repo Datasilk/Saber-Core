@@ -115,9 +115,9 @@ namespace Saber.Core
         /// adhere to the requirements of a Saber website folder structure
         /// </summary>
         /// <param name="zip"></param>
-        public static void ImportWebsite(Stream zip)
+        public static void ImportWebsite(Stream zip, bool clean = false, string[] protectedFiles = null)
         {
-            Delegates.Website.ImportWebsite(zip);
+            Delegates.Website.ImportWebsite(zip, clean, protectedFiles);
         }
 
         public static class Settings

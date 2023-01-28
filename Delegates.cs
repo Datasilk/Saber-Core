@@ -55,7 +55,7 @@ namespace Saber.Core
             /// <summary>
             /// Used by Saber to delegate execution of Core.Website.ImportWebsite. Please do not modify this field.
             /// </summary>
-            public static Action<Stream> ImportWebsite { get; set; }
+            public static Action<Stream, bool, string[]> ImportWebsite { get; set; }
 
             /// <summary>
             /// Used by Saber to delegate execution of Core.Website.ExportWebsite. Please do not modify this field.
