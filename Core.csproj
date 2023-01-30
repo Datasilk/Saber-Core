@@ -11,9 +11,9 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageReleaseNotes>Added Page Response interceptor interface</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.8.1</AssemblyVersion>
-    <FileVersion>1.0.8.1</FileVersion>
-    <Version>1.0.8.1</Version>
+    <AssemblyVersion>1.0.8.2</AssemblyVersion>
+    <FileVersion>1.0.8.2</FileVersion>
+    <Version>1.0.8.2</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2023 Datasilk</Copyright>
