@@ -14,7 +14,7 @@ namespace Saber
     {
         public static Environment Environment { get; set; } = Environment.development;
         public static string Name { get; set; }
-        public static string Host { get; set; }
+        public static string[] Host { get; set; }
         public static bool IsDocker { get; set; }
         public static Dictionary<string, string> Languages { get; set; }
         public static string[] ServicePaths { get; set; }
