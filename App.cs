@@ -37,14 +37,15 @@ namespace Saber
         public static string MapPath(string path = "")
         {
             path = path.Replace("\\", "/");
+            if(path.IndexOf(RootPath) == 0) { return path; }
             if (path.Substring(0, 1) == "/") { path = path.Substring(1); } //remove slash at beginning of string
             if (IsDocker)
             {
-                return Path.Combine(RootPath, path).Replace("\\", "/");
+                return Path.Join(RootPath, path).Replace("\\", "/");
             }
             else
             {
-                return Path.Combine(RootPath.Replace("/", "\\"), path.Replace("/", "\\"));
+                return Path.Join(RootPath.Replace("/", "\\"), path.Replace("/", "\\"));
             }
         }
     }

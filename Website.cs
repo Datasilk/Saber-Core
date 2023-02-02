@@ -80,7 +80,7 @@ namespace Saber.Core
         public static void ResetCache(string path, string language = "en")
         {
             var paths = PageInfo.GetRelativePath(path);
-            var filepath = string.Join("/", paths);
+            var filepath = "/" + string.Join("/", paths);
             var filename = ContentFields.ContentFile(path, language);
             Console.WriteLine("Reset cache for " + filename);
             Cache.Remove(filepath + ".json");
