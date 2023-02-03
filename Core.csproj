@@ -9,11 +9,11 @@
     <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Added Page Response interceptor interface</PackageReleaseNotes>
+    <PackageReleaseNotes>Added Saber.Core.DataSources.Add so plugins can add new datasources during runtime</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.8.2</AssemblyVersion>
-    <FileVersion>1.0.8.2</FileVersion>
-    <Version>1.0.8.2</Version>
+    <AssemblyVersion>1.0.8.3</AssemblyVersion>
+    <FileVersion>1.0.8.3</FileVersion>
+    <Version>1.0.8.3</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2023 Datasilk</Copyright>
@@ -31,9 +31,7 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Datasilk.Core.DOM" Version="1.0.3" />
     <PackageReference Include="Datasilk.Core.Mvc" Version="1.0.8" />
-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-    <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
