@@ -94,5 +94,11 @@ namespace Saber.Core
 
             public static Func<DataSourceInfo, Vendor.DataSource.PositionSettings, string> RenderPositionSettings { get; set; }
         }
+
+        public static class Image
+        {
+            public static Action<string, string, int> Shrink { get; set; }
+            public static Action<string, string, int> ConvertPngToJpg { get; set; }
+        }
     }
 }

@@ -16,5 +16,15 @@
             ".ico",
             ".tiff"
         };
+
+        public static void Shrink(string filename, string outfile, int width)
+        {
+            Delegates.Image.Shrink(filename, outfile, width);
+        }
+
+        public static void ConvertPngToJpg(string filename, string outfile, int quality = 100)
+        {
+            Delegates.Image.ConvertPngToJpg(filename, outfile, quality);
+        }
     }
 }
