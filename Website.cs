@@ -42,9 +42,9 @@ namespace Saber.Core
         public static List<string> AllFolders()
         {
             var list = new List<string>();
-            list.AddRange(Directory.GetDirectories(App.MapPath("/Content/"))
+            list.AddRange(Directory.GetDirectories(App.MapPath("/Content/"), "*", SearchOption.AllDirectories)
                 .Where(a => !a.Replace("\\", "/").Contains("/Content/temp")));
-            list.AddRange(Directory.GetDirectories(App.MapPath("/wwwroot/"))
+            list.AddRange(Directory.GetDirectories(App.MapPath("/wwwroot/"), "*", SearchOption.AllDirectories)
                 .Where(a => !a.Replace("\\", "/").Contains("/wwwroot/editor")));
             return list;
         }
