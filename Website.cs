@@ -20,8 +20,9 @@ namespace Saber.Core
             //RecurseDirectories(list, "/Content/partials");
             list.Add(App.MapPath("/Content/website.less"));
             list.Add(App.MapPath("/Content/website.json"));
+            list.Add(App.MapPath("/Content/website.js"));
             RecurseDirectories(list, "/wwwroot", new string[] { App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
-            RecurseDirectories(list, "/wwwroot/content", new string[] { ".js", ".css" });
+            RecurseDirectories(list, "/wwwroot/content");
             if (include != null && include.Length > 0)
             {
                 foreach (var i in include)
@@ -64,15 +65,8 @@ namespace Saber.Core
             list.AddRange(parent.GetFiles().Select(a => a.FullName).Where(a => ignore != null ? ignore.Where(b => a.IndexOf(b) >= 0).Count() == 0 : true));
             foreach (var dir in dirs)
             {
-                var subpath = dir.FullName;
-                if (App.IsDocker)
-                {
-                    subpath = "/" + subpath.Replace(App.RootPath, "");
-                }
-                else
-                {
-                    subpath = "\\" + subpath.Replace(App.RootPath, "");
-                }
+                var subpath = dir.FullName.Replace("\\", "/");
+                subpath = "/" + subpath.Replace(App.RootPath, "");
                 RecurseDirectories(list, subpath, ignore);
             }
         }

@@ -9,11 +9,11 @@
     <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Added image manipulation functions (Shrink, ConvertPngToJpg) provided by SixLabors.ImageSharp</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated export feature with arguments to filter website files that should be exported to zip</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.9.0</AssemblyVersion>
-    <FileVersion>1.0.9.0</FileVersion>
-    <Version>1.0.9.0</Version>
+    <AssemblyVersion>1.0.9.1</AssemblyVersion>
+    <FileVersion>1.0.9.1</FileVersion>
+    <Version>1.0.9.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2023 Datasilk</Copyright>

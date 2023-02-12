@@ -60,7 +60,7 @@ namespace Saber.Core
             /// <summary>
             /// Used by Saber to delegate execution of Core.Website.ExportWebsite. Please do not modify this field.
             /// </summary>
-            public static Func<byte[]> ExportWebsite { get; set; }
+            public static Func<bool, bool, bool, DateTime?, byte[]> ExportWebsite { get; set; }
 
             public static class Settings
             {
