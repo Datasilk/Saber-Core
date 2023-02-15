@@ -9,11 +9,11 @@
     <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Updated export feature with arguments to filter website files that should be exported to zip</PackageReleaseNotes>
+    <PackageReleaseNotes>Added SameSite:none option to session &amp; authId cookies and also added App.CookiesUseSameSiteNone bool which can be set in the users config.json file under cookies &gt; samesite</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.9.1</AssemblyVersion>
-    <FileVersion>1.0.9.1</FileVersion>
-    <Version>1.0.9.1</Version>
+    <AssemblyVersion>1.0.9.2</AssemblyVersion>
+    <FileVersion>1.0.9.2</FileVersion>
+    <Version>1.0.9.2</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2023 Datasilk</Copyright>

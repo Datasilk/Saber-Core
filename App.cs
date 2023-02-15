@@ -16,6 +16,7 @@ namespace Saber
         public static string Name { get; set; }
         public static string[] Host { get; set; }
         public static bool IsDocker { get; set; }
+        public static bool CookiesUseSameSiteNone { get; set; }
         public static Dictionary<string, string> Languages { get; set; }
         public static string[] ServicePaths { get; set; }
         public static Models.Website.Settings Website { get; set; }

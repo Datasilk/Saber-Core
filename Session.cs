@@ -115,6 +115,11 @@ namespace Saber.Core
                     {
                         Expires = DateTime.Now.AddMinutes(ExpiresInMinutes)
                     };
+                    if (App.CookiesUseSameSiteNone == true)
+                    {
+                        options.SameSite = SameSiteMode.None;
+                        options.Secure = true;
+                    }
                     _context.Response.Cookies.Append(CookieName, _key, options);
                 }
             }
