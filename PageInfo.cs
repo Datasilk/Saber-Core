@@ -29,6 +29,7 @@ namespace Saber.Core
                     case "temp":
                         return new string[] { };
                 }
+                paths[0] = "Content";
             }
             else if (paths.Length > 0 && paths[0].ToLower() != "content")
             {
