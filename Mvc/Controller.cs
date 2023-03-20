@@ -15,7 +15,7 @@ namespace Saber.Core
         public string Title { get; set; } = "Datasilk";
         public string Description { get; set; } = "";
         public string Theme { get; set; } = "dark";
-        public StringBuilder Footer { get; set; }
+        public StringBuilder Footer { get; set; } = new StringBuilder();
 
         public EditorType EditorUsed
         {
@@ -104,6 +104,7 @@ namespace Saber.Core
 
         public string Redirect(string url)
         {
+            Context.Response.Redirect(url);
             return "<script language=\"javascript\">window.location.href = '" + url + "';</script>";
         }
 

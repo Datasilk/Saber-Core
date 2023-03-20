@@ -62,6 +62,11 @@ namespace Saber.Core
             /// </summary>
             public static Func<bool, bool, bool, DateTime?, byte[]> ExportWebsite { get; set; }
 
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.Restart. Please do not modify this field.
+            /// </summary>
+            public static Action Restart { get; set; }
+
             public static class Settings
             {
                 public static Func<Models.Website.Settings> Load { get; set; }

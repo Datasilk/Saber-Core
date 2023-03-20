@@ -114,6 +114,14 @@ namespace Saber.Core
             Delegates.Website.ImportWebsite(zip, clean, protectedFiles);
         }
 
+        /// <summary>
+        /// Restarts the Saber web application by updating the root web.config
+        /// </summary>
+        public static void Restart()
+        {
+            Delegates.Website.Restart();
+        }
+
         public static class Settings
         {
             /// <summary>
