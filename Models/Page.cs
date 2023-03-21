@@ -14,6 +14,7 @@ namespace Saber.Models.Page
         public string footer { get; set; } = "";
         public List<string> stylesheets { get; set; } = new List<string>();
         public List<string> scripts { get; set; } = new List<string>();
+        public bool livetemplate { get; set; } = false;
 
         public Settings()
         {
