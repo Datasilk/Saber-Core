@@ -37,6 +37,12 @@ namespace Saber.Models.Page
         public bool HtmlExists { get; set; } = false;
         [JsonIgnore]
         public string[] Paths { get; set; } = Array.Empty<string>();
+        [JsonIgnore]
+        public string TemplatePath { get; set; } = "";
+        [JsonIgnore]
+        public List<string> LiveStylesheets { get; set; } = new List<string>();
+        [JsonIgnore]
+        public List<string> LiveScripts { get; set; } = new List<string>();
 
         public Settings()
         {
