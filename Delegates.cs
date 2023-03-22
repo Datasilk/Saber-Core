@@ -43,6 +43,26 @@ namespace Saber.Core
         public static class Website
         {
             /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.AllFiles. Please do not modify this field.
+            /// </summary>
+            public static Func<string[]?, List<string>> AllFiles { get; set; }
+            
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.AllFolders. Please do not modify this field.
+            /// </summary>
+            public static Func<List<string>> AllFolders { get; set; }
+
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.AllRootFolders. Please do not modify this field.
+            /// </summary>
+            public static Func<List<string>> AllRootFolders { get; set; }
+
+            /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.ResetCache. Please do not modify this field.
+            /// </summary>
+            public static Action<string, string> ResetCache { get; set; }
+
+            /// <summary>
             /// Used by Saber to delegate execution of Core.Website.SaveLessFile. Please do not modify this field.
             /// </summary>
             public static Action<string, string, string> SaveLessFile { get; set; }
@@ -104,6 +124,16 @@ namespace Saber.Core
         {
             public static Action<string, string, int> Shrink { get; set; }
             public static Action<string, string, int> ConvertPngToJpg { get; set; }
+        }
+
+        public static class PageInfo
+        {
+            public static Func<string, string[]> GetRelativePath { get; set; }
+            public static Func<string, string> ConfigFilePath { get; set; }
+            public static Func<string, Models.Page.Settings> GetPageConfig { get; set; }
+            public static Func<string, string> NameFromFile { get; set; }
+            public static Action<string, Models.Page.Settings> SavePageConfig { get; set; }
+            public static Action<string, string> ClearCache { get; set; }
         }
     }
 }

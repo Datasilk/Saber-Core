@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Collections.Generic;
 
 
@@ -8,80 +6,42 @@ namespace Saber.Core
 {
     public static class Website
     {
-        public static List<string> AllFiles(string[] include = null)
+        /// <summary>
+        /// Get a list of files belonging to the website
+        /// </summary>
+        /// <param name="include"></param>
+        /// <returns></returns>
+        public static List<string> AllFiles(string[]? include = null)
         {
-            var list = new List<string>();
-            var allfolders = AllFolders();
-            foreach (var folder in allfolders)
-            {
-                RecurseDirectories(list, folder.Replace("\\", "/").Replace(App.RootPath, ""));
-            }
-            
-            //RecurseDirectories(list, "/Content/partials");
-            list.Add(App.MapPath("/Content/website.less"));
-            list.Add(App.MapPath("/Content/website.json"));
-            list.Add(App.MapPath("/Content/website.js"));
-            RecurseDirectories(list, "/wwwroot", new string[] { App.IsDocker ? "/content/" : "\\content\\", App.IsDocker ? "/editor/" : "\\editor\\", "web.config", "website.css" });
-            RecurseDirectories(list, "/wwwroot/content");
-            if (include != null && include.Length > 0)
-            {
-                foreach (var i in include)
-                {
-                    RecurseDirectories(list, i);
-                }
-            }
-            return list;
+            return Delegates.Website.AllFiles(include);
         }
 
-        public static List<string> SystemPages { get; set; } = new List<string>()
-        {
-            "access-denied", "forgotpass", "forgotpass-complete", "home", "login", "passwordreset", 
-            "resetpass", "resetpass-complete", "signup", "signup-complete"
-        };
-
+        /// <summary>
+        /// Get a list of folders within the website
+        /// </summary>
+        /// <returns></returns>
         public static List<string> AllFolders()
         {
-            var list = new List<string>();
-            list.AddRange(Directory.GetDirectories(App.MapPath("/Content/"), "*", SearchOption.AllDirectories)
-                .Where(a => !a.Replace("\\", "/").Contains("/Content/temp")));
-            list.AddRange(Directory.GetDirectories(App.MapPath("/wwwroot/"), "*", SearchOption.AllDirectories)
-                .Where(a => !a.Replace("\\", "/").Contains("/wwwroot/editor")));
-            return list;
+            return Delegates.Website.AllFolders();
         }
 
+        /// <summary>
+        /// Get a list of all root folders within the website
+        /// </summary>
+        /// <returns></returns>
         public static List<string> AllRootFolders()
         {
-            var root = App.MapPath("/");
-            return Directory.GetDirectories(App.MapPath("/Content/"), "", SearchOption.TopDirectoryOnly)
-                .Where(a => !a.Replace("\\", "/").Contains("/Content/temp"))
-                .Select(a => a.Replace(root, "").Replace("\\", "/")).ToList();
+            return Delegates.Website.AllRootFolders();
         }
 
-        private static void RecurseDirectories(List<string> list, string path, string[] ignore = null)
-        {
-            var parent = new DirectoryInfo(App.MapPath(path));
-            if (!parent.Exists) { return; }
-            var dirs = parent.GetDirectories().Where(a => ignore != null ? ignore.Where(b => a.FullName.IndexOf(b) >= 0).Count() == 0 : true);
-            list.AddRange(parent.GetFiles().Select(a => a.FullName).Where(a => ignore != null ? ignore.Where(b => a.IndexOf(b) >= 0).Count() == 0 : true));
-            foreach (var dir in dirs)
-            {
-                var subpath = dir.FullName.Replace("\\", "/");
-                subpath = "/" + subpath.Replace(App.RootPath, "");
-                RecurseDirectories(list, subpath, ignore);
-            }
-        }
-
+        /// <summary>
+        /// Reset Cached objects for the entire website
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="language"></param>
         public static void ResetCache(string path, string language = "en")
         {
-            var paths = PageInfo.GetRelativePath(path);
-            var filepath = "/" + string.Join("/", paths);
-            var filename = ContentFields.ContentFile(path, language);
-            Console.WriteLine("Reset cache for " + filename);
-            Cache.Remove(filepath + ".json");
-            Cache.Remove(filename);
-            Console.WriteLine("Reset View cache for " + filepath + ".html");
-            ViewCache.Remove(filepath + ".html");
-            ViewCache.Remove(filename);
+            Delegates.Website.ResetCache(path, language);
         }
 
         /// <summary>
