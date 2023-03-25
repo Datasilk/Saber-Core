@@ -77,7 +77,7 @@ namespace Saber.Core
 
         public virtual bool CheckSecurity(string key = "") 
         {
-            return Delegates.Service.CheckSecurity(this, key);
+            return Delegates.Service.CheckSecurity(User, key);
         }
 
         public string Success()

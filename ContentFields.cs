@@ -88,10 +88,13 @@ namespace Saber.Core
         /// <param name="language">Selected language used to pass into all vendor HTML Components found in the partial view</param>
         /// <param name="container">CSS selector of the HTML container that this form will be injected into. This field is passed into all vendor HTML Components found in the partial view.</param>
         /// <param name="fields">The values associated with each mustache variable in the partial view.</param>
+        /// <param name="excludedFields">Fields to exclude from the form</param>
+        /// <param name="fieldTypes">List of field data types to provide if known</param>
+        /// <param name="extraVars">Dictionary of extra variables you can include to pass to specific fields</param>
         /// <returns>An HTML string representing the content fields form</returns>
-        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null, Dictionary<string, ContentFields.FieldType> fieldTypes = null)
+        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null, Dictionary<string, ContentFields.FieldType> fieldTypes = null, Dictionary<string, Dictionary<string, string>> extraVars = null)
         {
-            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields, fieldTypes);
+            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields, fieldTypes, extraVars);
         }
 
         public static string Serialize(Dictionary<string, string> fields)

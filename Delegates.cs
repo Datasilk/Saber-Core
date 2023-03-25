@@ -21,7 +21,7 @@ namespace Saber.Core
         {
             public static Action<Core.Service> Init { get; set; }
 
-            public static Func<Core.Service, string, bool> CheckSecurity { get; set; }
+            public static Func<IUser, string, bool> CheckSecurity { get; set; }
 
             public static Func<Core.Service, IUser> GetUser { get; set; }
         }
@@ -104,7 +104,7 @@ namespace Saber.Core
         {
             public static Func<string, string> GetFieldId { get; set; }
             public static Func<View, int, List<Models.ContentFieldElementInfo>, Core.ContentFields.FieldType> GetFieldType { get; set; }
-            public static Func<IRequest, string, View, string, string, Dictionary<string, string>, string[], Dictionary<string, Core.ContentFields.FieldType>, string> RenderForm {get;set;}
+            public static Func<IRequest, string, View, string, string, Dictionary<string, string>, string[], Dictionary<string, Core.ContentFields.FieldType>, Dictionary<string, Dictionary<string, string>>, string> RenderForm {get;set;}
         }
 
         public static class DataSources
