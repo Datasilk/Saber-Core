@@ -90,11 +90,11 @@ namespace Saber.Core
         /// <param name="fields">The values associated with each mustache variable in the partial view.</param>
         /// <param name="excludedFields">Fields to exclude from the form</param>
         /// <param name="fieldTypes">List of field data types to provide if known</param>
-        /// <param name="extraVars">Dictionary of extra variables you can include to pass to specific fields</param>
+        /// <param name="extraArgs">Dictionary of extra variables you can include to pass to specific fields</param>
         /// <returns>An HTML string representing the content fields form</returns>
-        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null, Dictionary<string, ContentFields.FieldType> fieldTypes = null, Dictionary<string, Dictionary<string, string>> extraVars = null)
+        public static string RenderForm(IRequest request, string title, View view, string language, string container, Dictionary<string, string> fields, string[] excludedFields = null, Dictionary<string, ContentFields.FieldType> fieldTypes = null, Dictionary<string, Dictionary<string, string>> extraArgs = null)
         {
-            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields, fieldTypes, extraVars);
+            return Delegates.ContentFields.RenderForm(request, title, view, language, container, fields, excludedFields, fieldTypes, extraArgs);
         }
 
         public static string Serialize(Dictionary<string, string> fields)

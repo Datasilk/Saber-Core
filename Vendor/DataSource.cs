@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.Text.Json;
 using Saber.Core;
+using System.Text.Json.Serialization;
 
 namespace Saber.Vendor
 {
@@ -101,25 +103,32 @@ namespace Saber.Vendor
         public class FilterGroup
         {
             [XmlElement("element")]
+            [JsonPropertyName("e")]
             public List<FilterElement> Elements { get; set; } = new List<FilterElement>();
             [XmlElement("groups")]
+            [JsonPropertyName("g")]
             public List<FilterGroup> Groups { get; set; } = new List<FilterGroup>();
             [XmlAttribute("match")]
+            [JsonPropertyName("m")]
             public GroupMatchType Match { get; set; } = GroupMatchType.Any;
         }
         public class FilterElement
         {
             [XmlAttribute("column")]
+            [JsonPropertyName("c")]
             public string Column { get; set; } = "";
             [XmlAttribute("match")]
+            [JsonPropertyName("m")]
             public FilterMatchType Match { get; set; } = FilterMatchType.Contains;
             [XmlAttribute("value")]
+            [JsonPropertyName("v")]
             public string Value { get; set; } = "";
             /// <summary>
             /// To map your filter to a request parameter (querystring or multi-part form data), 
             /// define the name for your querystring parameter.
             /// </summary>
-            [XmlIgnore]
+            [XmlAttribute("queryname")]
+            [JsonPropertyName("qn")]
             public string QueryName { get; set; } = "";
         }
 
@@ -137,6 +146,7 @@ namespace Saber.Vendor
         public class OrderByList
         {
             [XmlElement("sort")]
+            [JsonPropertyName("o")]
             public List<OrderBy> OrderBy { get; set; } = new List<OrderBy>();
         }
 
@@ -145,17 +155,24 @@ namespace Saber.Vendor
         public class OrderBy
         {
             [XmlAttribute("column")]
+            [JsonPropertyName("c")]
             public string Column { get; set; } = "";
             [XmlAttribute("by")]
+            [JsonPropertyName("d")]
             public OrderByDirection Direction { get; set; } = OrderByDirection.Ascending;
         }
 
         public class PositionSettings
         {
+            [JsonPropertyName("s")]
             public int Start { get; set; } = 0;
+            [JsonPropertyName("sq")]
             public string StartQuery { get; set; } = "";
+            [JsonPropertyName("l")]
             public int Length { get; set; } = 10;
+            [JsonPropertyName("lq")]
             public string LengthQuery { get; set; } = "";
+            [JsonPropertyName("p")]
             public bool Paging { get; set; } = true;
         }
 
