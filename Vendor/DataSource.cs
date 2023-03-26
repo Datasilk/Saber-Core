@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using System.Text.Json;
-using Saber.Core;
 using System.Text.Json.Serialization;
+using Saber.Core;
 
 namespace Saber.Vendor
 {
@@ -39,7 +38,24 @@ namespace Saber.Vendor
             /// </summary>
             public string ChildColumn { get; set; } = "";
 
+            /// <summary>
+            /// Name of parent dataset
+            /// </summary>
             public string ParentTable { get; set; } = "";
+
+            /// <summary>
+            /// Determines how to get relationship data from the data source
+            /// </summary>
+            public RelationshipType Type { get; set; }
+        }
+
+        [Serializable]
+        public enum RelationshipType
+        {
+            [XmlEnum("0")]
+            SingleSelection = 0,
+            [XmlEnum("1")]
+            FilteredList = 1
         }
 
         [Serializable]
