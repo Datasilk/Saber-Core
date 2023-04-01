@@ -55,7 +55,11 @@ namespace Saber.Vendor
             [XmlEnum("0")]
             SingleSelection = 0,
             [XmlEnum("1")]
-            FilteredList = 1
+            FilteredList = 1,
+            [XmlEnum("2")]
+            RelatedList = 2,
+            [XmlEnum("3")]
+            MultiSelection = 3
         }
 
         [Serializable]
