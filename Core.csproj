@@ -9,11 +9,11 @@
     <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Added new version of Datasilk.Core.MVC and added new RelationshipType to DataSources for various types of lists (single selection, relational, &amp; filtered)</PackageReleaseNotes>
+    <PackageReleaseNotes>Added MultiSelection to RelationshipType</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.9.4</AssemblyVersion>
-    <FileVersion>1.0.9.4</FileVersion>
-    <Version>1.0.9.4</Version>
+    <AssemblyVersion>1.0.9.5</AssemblyVersion>
+    <FileVersion>1.0.9.5</FileVersion>
+    <Version>1.0.9.5</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2023 Datasilk</Copyright>
