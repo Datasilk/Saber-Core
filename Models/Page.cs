@@ -40,6 +40,8 @@ namespace Saber.Models.Page
         [JsonIgnore]
         public string TemplatePath { get; set; } = "";
         [JsonIgnore]
+        public bool HasNoTemplate { get; set; } = false;
+        [JsonIgnore]
         public List<string> LiveStylesheets { get; set; } = new List<string>();
         [JsonIgnore]
         public List<string> LiveScripts { get; set; } = new List<string>();
