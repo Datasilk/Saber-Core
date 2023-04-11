@@ -15,6 +15,10 @@ namespace Saber
         public static Environment Environment { get; set; } = Environment.development;
         public static string Name { get; set; }
         public static string[] Host { get; set; }
+        /// <summary>
+        /// public domain found in config.json hostUri property
+        /// </summary>
+        public static string HostUri { get; set; }
         public static bool IsDocker { get; set; }
         public static bool CookiesUseSameSiteNone { get; set; }
         public static Dictionary<string, string> Languages { get; set; }
