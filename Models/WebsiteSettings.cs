@@ -19,8 +19,7 @@ namespace Saber.Models.Website
         public List<EmailAction> Actions { get; set; } = new List<EmailAction>()
         {
             new EmailAction() { Type = "signup", Subject = "Welcome to Saber!" },
-            new EmailAction() { Type = "forgotpass", Subject = "Saber Password Reset" },
-            new EmailAction() { Type = "newsletter" }
+            new EmailAction() { Type = "forgotpass", Subject = "Password Reset" }
         };
     }
 
