@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Saber.Core.Vendor;
 using Saber.Vendor;
 
 namespace Saber.Core
@@ -24,6 +25,7 @@ namespace Saber.Core
         public static List<InternalApi> InternalApis { get; set; } = new List<InternalApi>();
         public static List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();
         public static List<IVendorPageResponse> PageResponses { get; set; } = new List<IVendorPageResponse>();
+        public static List<NotificationType> NotificationTypes { get; set; } = new List<NotificationType>();
     }
 
     public class VendorInfo : IVendorInfo
@@ -32,7 +34,7 @@ namespace Saber.Core
         public string Name { get; set; }
         public string Description { get; set; }
         public string Icon { get; set; }
-        public Vendor.Version Version { get; set; }
+        public Saber.Vendor.Version Version { get; set; }
         public string DLL { get; set; }
         public string Assembly { get; set; }
         public string Path { get; set; }
@@ -52,6 +54,7 @@ namespace Saber.Core
         public List<Models.PublicApiInfo> PublicApis { get; set; } = new List<Models.PublicApiInfo>();
         public List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();
         public List<IVendorPageResponse> PageResponses { get; set; } = new List<IVendorPageResponse>();
+        public List<NotificationType> NotificationTypes { get; set; } = new List<NotificationType>();
     }
 
     public class DataSourceInfo

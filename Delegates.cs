@@ -110,14 +110,14 @@ namespace Saber.Core
         public static class DataSources
         {
             public static Action<DataSourceInfo> Add { get; set; }
-            public static Func<IRequest, Vendor.DataSource, Vendor.DataSource.FilterElement, string> RenderFilter { get; set; }
-            public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, string> RenderFilters { get; set; }
-            public static Func<IRequest, DataSourceInfo, List<Vendor.DataSource.FilterGroup>, int, string> RenderFilterGroups { get; set; }
+            public static Func<IRequest, Saber.Vendor.DataSource, Saber.Vendor.DataSource.FilterElement, string> RenderFilter { get; set; }
+            public static Func<IRequest, DataSourceInfo, List<Saber.Vendor.DataSource.FilterGroup>, string> RenderFilters { get; set; }
+            public static Func<IRequest, DataSourceInfo, List<Saber.Vendor.DataSource.FilterGroup>, int, string> RenderFilterGroups { get; set; }
             
-            public static Func<Vendor.DataSource.OrderBy, string> RenderOrderBy { get; set; }
-            public static Func<DataSourceInfo, List<Vendor.DataSource.OrderBy>, string> RenderOrderByList { get; set; }
+            public static Func<Saber.Vendor.DataSource.OrderBy, string> RenderOrderBy { get; set; }
+            public static Func<DataSourceInfo, List<Saber.Vendor.DataSource.OrderBy>, string> RenderOrderByList { get; set; }
 
-            public static Func<DataSourceInfo, Vendor.DataSource.PositionSettings, string> RenderPositionSettings { get; set; }
+            public static Func<DataSourceInfo, Saber.Vendor.DataSource.PositionSettings, string> RenderPositionSettings { get; set; }
         }
 
         public static class Image
@@ -134,6 +134,11 @@ namespace Saber.Core
             public static Func<string, string> NameFromFile { get; set; }
             public static Action<string, Models.Page.Settings> SavePageConfig { get; set; }
             public static Action<string, string> ClearCache { get; set; }
+        }
+
+        public static class Notifications
+        {
+            public static Action<string, string, string, int?, int?, string> CreateNotification { get; set; }
         }
     }
 }
