@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Saber.Core.Vendor;
 using Saber.Vendor;
 
 namespace Saber.Core
@@ -34,7 +33,7 @@ namespace Saber.Core
         public string Name { get; set; }
         public string Description { get; set; }
         public string Icon { get; set; }
-        public Saber.Vendor.Version Version { get; set; }
+        public Vendor.Version Version { get; set; }
         public string DLL { get; set; }
         public string Assembly { get; set; }
         public string Path { get; set; }

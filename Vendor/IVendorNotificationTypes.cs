@@ -1,4 +1,4 @@
-﻿namespace Saber.Core.Vendor
+﻿namespace Saber.Vendor
 {
     /// <summary>
     /// A list of notification types that your plugin will utilize

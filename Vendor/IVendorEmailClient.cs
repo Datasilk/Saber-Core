@@ -45,6 +45,12 @@ namespace Saber.Vendor
         void SaveConfig(Dictionary<string, string> parameters);
 
         /// <summary>
+        /// Check to see if email client is properly configured (for notification purposes)
+        /// </summary>
+        /// <returns></returns>
+        bool IsConfigured();
+
+        /// <summary>
         /// Executed when Saber is requesting to send an email via your email client
         /// </summary>
         /// <param name="message">Mail Message which includes all information about the email; to, from, subject, body, etc.</param>

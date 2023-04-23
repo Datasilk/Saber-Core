@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Saber.Core.Vendor
+namespace Saber.Vendor
 {
     public abstract class NotificationType
     {
@@ -35,7 +35,7 @@ namespace Saber.Core.Vendor
         /// for the plugin to work properly
         /// </summary>
         /// <returns></returns>
-        public virtual Models.Notification[] GetDynamicList()
+        public virtual Models.Notification[] GetDynamicList(Core.IUser user)
         {
             var list = new List<Models.Notification>();
             return list.ToArray();
@@ -51,7 +51,7 @@ namespace Saber.Core.Vendor
         /// <param name="securityKey">Optional. Used when the notification is created for anyone who has access to a specific security key to see.</param>
         public void CreateNotification(string text, string url, int? userId = null, int? groupId = null, string securityKey = "")
         {
-            Delegates.Notifications.CreateNotification(text, url, Type, userId, groupId, securityKey);
+            Core.Delegates.Notifications.CreateNotification(text, url, Type, userId, groupId, securityKey);
         }
     }
 }
