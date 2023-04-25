@@ -16,17 +16,19 @@ namespace Saber.Vendor
         public abstract string Icon { get; set; }
 
         /// <summary>
-        /// Used to render the notification
+        /// Used to render the notification item
         /// </summary>
         /// <param name="notification">Details about the notification</param>
         /// <param name="defaultView">The generic notification item view</param>
+        /// <param name="id">ID of notification item</param>
+        /// <param name="text">Text body of the notification</param>
+        /// <param name="url">URL that the user is redirected to when clicking on the notification, e.g. "javascript:S.editor.websettings.show('email-settings')"</param>
+        /// <param name="read">True if the notification has already been read</param>
+        /// <param name="dateCreated">Date the notification was created</param>
         /// <returns></returns>
-        public virtual string Render(View defaultView, Guid id, string text, string url, DateTime? dateCreated = null)
+        public virtual string Render(View defaultView, Guid id, string text, string url, bool read, DateTime? dateCreated = null)
         {
-            defaultView["url"] = url;
-            defaultView["icon"] = Icon;
-            defaultView["notification"] = text;
-            return defaultView.Render();
+            return Core.Delegates.Notifications.Render(this, defaultView, id, text, url, read, dateCreated);
         }
 
         /// <summary>

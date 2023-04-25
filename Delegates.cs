@@ -139,6 +139,7 @@ namespace Saber.Core
         public static class Notifications
         {
             public static Action<string, string, string, int?, int?, string> CreateNotification { get; set; }
+            public static Func<Vendor.NotificationType, View, Guid, string, string, bool, DateTime?, string> Render { get; set; }
         }
     }
 }

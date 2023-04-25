@@ -9,11 +9,11 @@
     <Description>Core MVC classes &amp; interfaces used in the Saber website builder.</Description>
     <RepositoryUrl>https://github.com/Datasilk/Saber-Core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Add App.HostUri to expose the public domain name of the live website. Also added Page.Settings.HasNoTemplate for caching purposes.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added notification system</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.9.6</AssemblyVersion>
-    <FileVersion>1.0.9.6</FileVersion>
-    <Version>1.0.9.6</Version>
+    <AssemblyVersion>1.0.9.7</AssemblyVersion>
+    <FileVersion>1.0.9.7</FileVersion>
+    <Version>1.0.9.7</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://saber.datasilk.io</PackageProjectUrl>
     <Copyright>2023 Datasilk</Copyright>
