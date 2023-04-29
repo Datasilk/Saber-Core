@@ -82,6 +82,12 @@ namespace Saber.Core
                 Value = "export", 
                 Label = "Export", 
                 Description = "Able to export the existing website to zip format"
+            },
+            new SecurityKey()
+            {
+                Value = "error-logs",
+                Label = "Error Logs",
+                Description = "View a list of error log details"
             }
         };
     }
