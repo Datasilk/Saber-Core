@@ -13,18 +13,28 @@ namespace Saber.Vendor
         /// <summary>
         /// Used to identify this email client (e.g. "send-grid")
         /// </summary>
-        string Key { get; set; }
+        string Key { get; }
 
         /// <summary>
         /// Human-readable name for your email client (e.g. "Send Grid")
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// A list of parameters used to configure the email client with. Include a parameter for your From address (if applicable)
         /// since emails sent using Saber's email platform does not provide a way to include a From address.
         /// </summary>
         Dictionary<string, EmailClientParameter> Parameters { get; set; }
+
+        /// <summary>
+        /// The Parameter key used to find the email address to send emails from.
+        /// </summary>
+        string FromKey { get; }
+
+        /// <summary>
+        /// The Parameter key used to find the name of the user to send emails from.
+        /// </summary>
+        string FromNameKey { get; }
 
         /// <summary>
         /// Executed when Saber starts running to give the email client a chance to load a config file into memory

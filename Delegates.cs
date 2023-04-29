@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Saber.Vendor;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Mail;
@@ -38,6 +39,10 @@ namespace Saber.Core
             /// Used by Saber to delegate execution of Core.Email.Send. Please do not modify this field.
             /// </summary>
             public static Action<MailMessage, string> Send { get; set; }
+            
+            public static Func<string, Models.Website.EmailAction> GetActionConfig { get; set; }
+
+            public static Func<string, IVendorEmailClient> GetClientForAction { get; set; }
         }
 
         public static class Website

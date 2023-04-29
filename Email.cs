@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Saber.Models.Website;
+using Saber.Vendor;
 using System.Net.Mail;
 
 namespace Saber.Core
@@ -26,11 +27,50 @@ namespace Saber.Core
             var message = new MailMessage(from, to);
             if(attachments != null && attachments.Length > 0)
             {
-                //include attachment data in message
+                //TODO: include attachment data in message
             }
             message.Subject = subject;
             message.Body = body;
             return message;
+        }
+
+        /// <summary>
+        /// Create a mail message used to be sent by Saber. 
+        /// </summary>
+        /// <param name="action">Associated email action used to create this message from</param>
+        /// <param name="client">Associated email client to send the email from</param>
+        /// <param name="to">The email address of the user you wish to send your email to</param>
+        /// <param name="body">The email HTML body</param>
+        /// <param name="attachments">The relative path to any file attachments you wish to include. 
+        /// If you want your email body to display image attachments, include an HTML <img/> tag with an 
+        /// href that matches your attachment file path</param>
+        /// <returns></returns>
+        public static MailMessage Create(EmailAction action, IVendorEmailClient client, MailAddress to, string body, string[] attachments = null)
+        {
+            var clientParams = client.GetConfig();
+            var from = new MailAddress(clientParams[client.FromKey], clientParams[client.FromNameKey]);
+            return Create(from, to, action.Subject, body, attachments);
+        }
+
+        /// <summary>
+        /// Send an email using the preferred email client based on the type of email being sent
+        /// </summary>
+        /// <param name="type">Email Action key used</param>
+        /// <param name="to">The email address of the user you wish to send your email to</param>
+        /// <param name="body">The email HTML body</param>
+        public static void Send(string type, string to, string body)
+        {
+            var action = Delegates.Email.GetActionConfig(type);
+            if (action != null)
+            {
+                var client = Delegates.Email.GetClientForAction(type);
+                var msg = Create(action, client, new MailAddress(to), body);
+                Delegates.Email.Send(msg, type);
+            }
+            else
+            {
+                throw new System.Exception("Count not find Email Action config");
+            }
         }
 
         /// <summary>
