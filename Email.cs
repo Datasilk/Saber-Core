@@ -1,14 +1,43 @@
 ﻿using Saber.Models.Website;
 using Saber.Vendor;
+using System;
 using System.Net.Mail;
 
 namespace Saber.Core
 {
     public static class Email
     {
+        public static Vendor.EmailAction GetAction(string key)
+        {
+            return Delegates.Email.GetAction(key);
+        }
 
-        public static MailAddress From { get; set; } = new MailAddress("saber@datasilk.io", "Saber");
+        public static Models.Website.EmailAction GetActionConfig(string key)
+        {
+            return Delegates.Email.GetActionConfig(key);
+        }
 
+        public static EmailClient GetClientConfig(Guid Id)
+        {
+            return Delegates.Email.GetClientConfig(Id);
+        }
+
+        public static IVendorEmailClient GetClient(string key)
+        {
+            return Delegates.Email.GetClient(key);
+        }
+
+        public static IVendorEmailClient GetClientForAction(Vendor.EmailAction action)
+        {
+            return Delegates.Email.GetClientForAction(action.Key);
+        }
+
+        public static IVendorEmailClient GetClientForAction(string key)
+        {
+            return Delegates.Email.GetClientForAction(key);
+        }
+
+        #region "Send"
         /// <summary>
         /// Create a mail message used to be sent by Saber. We do not define a From address since
         /// the preferred email client (Vendor.IVendorEmailClient) will supply a parameter for the 
@@ -45,10 +74,11 @@ namespace Saber.Core
         /// If you want your email body to display image attachments, include an HTML <img/> tag with an 
         /// href that matches your attachment file path</param>
         /// <returns></returns>
-        public static MailMessage Create(EmailAction action, IVendorEmailClient client, MailAddress to, string body, string[] attachments = null)
+        public static MailMessage Create(Models.Website.EmailAction action, Guid clientId, MailAddress to, string body, string[] attachments = null)
         {
-            var clientParams = client.GetConfig();
-            var from = new MailAddress(clientParams[client.FromKey], clientParams[client.FromNameKey]);
+            var clientParams = Delegates.Email.GetClientConfig(clientId);
+            var client = Delegates.Email.GetClientForAction(action.Type);
+            var from = new MailAddress(clientParams.Parameters[client.FromKey], clientParams.Parameters[client.FromNameKey]);
             return Create(from, to, action.Subject, body, attachments);
         }
 
@@ -63,13 +93,12 @@ namespace Saber.Core
             var action = Delegates.Email.GetActionConfig(type);
             if (action != null)
             {
-                var client = Delegates.Email.GetClientForAction(type);
-                var msg = Create(action, client, new MailAddress(to), body);
+                var msg = Create(action, action.ClientId, new MailAddress(to), body);
                 Delegates.Email.Send(msg, type);
             }
             else
             {
-                throw new System.Exception("Count not find Email Action config");
+                throw new Exception("Count not find Email Action config");
             }
         }
 
@@ -83,5 +112,8 @@ namespace Saber.Core
         {
             Delegates.Email.Send(message, type);
         }
+        #endregion
+
+
     }
 }

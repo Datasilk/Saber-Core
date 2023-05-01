@@ -17,7 +17,7 @@ namespace Saber.Core
         public static string[] HtmlComponentKeys { get; set; }
         public static Dictionary<string, HtmlComponentModel> SpecialVars { get; set; } = new Dictionary<string, HtmlComponentModel>();
         public static Dictionary<string, IVendorEmailClient> EmailClients { get; set; } = new Dictionary<string, IVendorEmailClient>();
-        public static Dictionary<string, EmailType> EmailTypes { get; set; } = new Dictionary<string, EmailType>();
+        public static Dictionary<string, EmailAction> EmailTypes { get; set; } = new Dictionary<string, EmailAction>();
         public static List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
         public static List<DataSourceInfo> DataSources { get; set; } = new List<DataSourceInfo>();
         public static List<SaberEvents> EventHandlers { get; set; } = new List<SaberEvents>();
@@ -48,7 +48,7 @@ namespace Saber.Core
         public string[] HtmlComponentKeys { get; set; }
         public Dictionary<string, HtmlComponentModel> SpecialVars { get; set; } = new Dictionary<string, HtmlComponentModel>();
         public Dictionary<string, IVendorEmailClient> EmailClients { get; set; } = new Dictionary<string, IVendorEmailClient>();
-        public Dictionary<string, EmailType> EmailTypes { get; set; } = new Dictionary<string, EmailType>();
+        public Dictionary<string, EmailAction> EmailActions { get; set; } = new Dictionary<string, EmailAction>();
         public List<IVendorWebsiteSettings> WebsiteSettings { get; set; } = new List<IVendorWebsiteSettings>();
         public List<Models.PublicApiInfo> PublicApis { get; set; } = new List<Models.PublicApiInfo>();
         public List<IVendorSignalR> SignalR { get; set; } = new List<IVendorSignalR>();

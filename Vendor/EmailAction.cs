@@ -1,6 +1,6 @@
 ﻿namespace Saber.Vendor
 {
-    public class EmailType
+    public class EmailAction
     {
         /// <summary>
         /// Used to identify the message type (e.g. "payment-confirmation")
