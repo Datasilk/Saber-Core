@@ -4,7 +4,7 @@ namespace Saber.Core
 {
     public static class Security
     {
-        public static List<SecurityKey> Keys { get; set; } = new List<SecurityKey>()
+        public static List<SecurityKey> Keys { get; } = new List<SecurityKey>()
         {
             new SecurityKey(){
                 Value = "code-editor",

@@ -88,12 +88,12 @@ namespace Saber.Core
         /// <param name="type">Email Action key used</param>
         /// <param name="to">The email address of the user you wish to send your email to</param>
         /// <param name="body">The email HTML body</param>
-        public static void Send(string type, string to, string body)
+        public static void Send(string type, MailAddress to, string body)
         {
             var action = Delegates.Email.GetActionConfig(type);
             if (action != null)
             {
-                var msg = Create(action, action.ClientId, new MailAddress(to), body);
+                var msg = Create(action, action.ClientId, to, body);
                 Delegates.Email.Send(msg, type);
             }
             else

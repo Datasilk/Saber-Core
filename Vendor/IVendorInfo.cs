@@ -16,7 +16,7 @@ namespace Saber.Vendor
         string Name { get; set; }
 
         /// <summary>
-        /// A short summary of what your plugin was design to do.
+        /// A short summary of what your plugin was designed to do.
         /// </summary>
         string Description { get; set; }
 
