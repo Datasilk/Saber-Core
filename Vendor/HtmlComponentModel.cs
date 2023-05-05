@@ -13,62 +13,62 @@ namespace Saber.Vendor
         /// Returns a list of Key/Value pairs to be injected into the view, the key being the variable name (including prefix), 
         /// and the value being the rendered HTML to replace the mustache variable with.
         /// </summary>
-        public Func<View, IRequest, Dictionary<string, string>, Dictionary<string, object>, string, string, List<KeyValuePair<string, string>>> Render { get; set; }
+        public virtual Func<View, IRequest, Dictionary<string, string>, Dictionary<string, object>, string, string, List<KeyValuePair<string, string>>> Render { get; set; }
 
         /// <summary>
         /// key that is used to identify the html mustache variable (e.g. "my-plugin" would be used for variable {{my-plugin}} )
         /// </summary>
-        public string Key { get; set; }
+        public virtual string Key { get; set; }
 
         /// <summary>
         /// If true, key is a prefix and so the associated mustache variable must either use the key or use the key with a dash
         /// and a suffix (e.g. {{list}} or {{list-users}} will generate a list component)
         /// </summary>
-        public bool KeyIsPrefix { get; set; } = false;
+        public virtual bool KeyIsPrefix { get; set; } = false;
 
         /// <summary>
         /// human-readable name of html variable
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// human-readable description of the HTML component's purpose. (Please keep it under 80 characters)
         /// </summary>
-        public string Description { get; set; } = "";
+        public virtual string Description { get; set; } = "";
 
         /// <summary>
         /// An svg file used for the icon displayed for this HTML component within Saber's Editor UI. Your icon should be 64x64 pixels 
-        /// in size and named icon.svg (e.g. "/Vendors/My-Plugin/icon.svg")
+        /// in size and named icon.svg (e.g. "vendors/my-plugin/icon.svg")
         /// </summary>
-        public string Icon { get; set; } = "";
+        public virtual string Icon { get; set; } = "";
 
         /// <summary>
         /// An external website that contains documentation for your HTML component
         /// </summary>
-        public string Website { get; set; } = "";
+        public virtual string Website { get; set; } = "";
 
         /// <summary>
         /// Determines if your HTML component acts as a mustache variable block, set Block = true
         /// </summary>
-        public bool Block { get; set; } = false;
+        public virtual bool Block { get; set; } = false;
 
         /// <summary>
         /// Determines if your HTML component will display a content field in the Page Content tab
         /// </summary>
-        public bool ContentField { get; set; } = true;
+        public virtual bool ContentField { get; set; } = true;
 
         /// <summary>
         /// When generating a special variable using Saber's HTML Component dropdown menu, HtmlHead will be included before the mustache variable is generated
         /// </summary>
-        public string HtmlHead { get; set; } = "";
+        public virtual string HtmlHead { get; set; } = "";
 
         /// <summary>
         /// When generating a special variable using Saber's HTML Component dropdown menu, HtmlFoot will be included after the mustache variable is generated
         /// </summary>
-        public string HtmlFoot { get; set; } = "";
+        public virtual string HtmlFoot { get; set; } = "";
 
         //parameter list with human-readable information about each required & optional parameter
-        public Dictionary<string, HtmlComponentParameter> Parameters { get; set; } = new Dictionary<string, HtmlComponentParameter>();
+        public virtual Dictionary<string, HtmlComponentParameter> Parameters { get; set; } = new Dictionary<string, HtmlComponentParameter>();
 
     }
 
