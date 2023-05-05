@@ -108,7 +108,7 @@ namespace Saber.Core
 
         public static class Log
         {
-            public static Action<int, string, string, string, string> Error { get; set; }
+            public static Action<int, string, string, string, string, string> Error { get; set; }
         }
 
         public static class ContentFields
