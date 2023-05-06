@@ -2,7 +2,7 @@
 
 namespace Saber.Vendor
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class ContentFieldAttribute : Attribute
     {
         public string FieldName { get; set; }
