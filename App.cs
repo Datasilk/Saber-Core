@@ -24,6 +24,7 @@ namespace Saber
         public static Dictionary<string, string> Languages { get; set; }
         public static string[] ServicePaths { get; set; }
         public static Models.Website.Settings Website { get; set; }
+        public static string Version { get; set; }
 
         private static string _rootPath { get; set; }
 

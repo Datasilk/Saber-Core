@@ -75,6 +75,16 @@ namespace Saber.Core
         }
 
         /// <summary>
+        /// Gets the current file version for a user-generated file. So far, Saber supports *.js & *.css files for version caching
+        /// </summary>
+        /// <param name="file">relative path to file (e.g. "/wwwroot/content/pages/home.js")</param>
+        /// <returns></returns>
+        public static int GetFileVersion(string file)
+        {
+            return Delegates.Website.GetFileVersion(file);
+        }
+
+        /// <summary>
         /// Restarts the Saber web application by updating the root web.config
         /// </summary>
         public static void Restart()

@@ -108,7 +108,7 @@ namespace Saber.Core
         public void AddScript(string url, string id = "", string callback = "")
         {
             if (ContainsResource(url)) { return; }
-            Scripts.Append("S.util.js.load('" + url + "', '" + id + "', " + (callback != "" ? callback : "null") + ");");
+            Scripts.Append("S.util.js.load('" + url + (url.Contains("?") ? "&" : "?") + "v=" + App.Version + "', '" + id + "', " + (callback != "" ? callback : "null") + ");");
         }
 
         public void AddScriptBlock(string javascript = "", string id = "")
@@ -120,7 +120,7 @@ namespace Saber.Core
         public void AddCSS(string url, string id = "")
         {
             if (ContainsResource(url)) { return; }
-            Scripts.Append("S.util.css.load('" + url + "', '" + id + "');");
+            Scripts.Append("S.util.css.load('" + url + (url.Contains("?") ? "&" : "?") + "v=" + App.Version + "', '" + id + "');");
         }
 
         protected bool ContainsResource(string url)

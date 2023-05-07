@@ -94,6 +94,11 @@ namespace Saber.Core
             public static Func<bool, bool, bool, DateTime?, byte[]> ExportWebsite { get; set; }
 
             /// <summary>
+            /// Used by Saber to delegate execution of Core.Website.GetFileVersion. Please do not modify this field.
+            /// </summary>
+            public static Func<string, int> GetFileVersion { get; set; }
+
+            /// <summary>
             /// Used by Saber to delegate execution of Core.Website.Restart. Please do not modify this field.
             /// </summary>
             public static Action Restart { get; set; }

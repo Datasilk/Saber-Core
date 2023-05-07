@@ -111,14 +111,14 @@ namespace Saber.Core
         public void AddScript(string url, string id = "", string callback = "")
         {
             if (ContainsResource(url)) { return; }
-            Scripts.Append("<script language=\"javascript\"" + (id != "" ? " id=\"" + id + "\"" : "") + " src=\"" + url + "\"" +
+            Scripts.Append("<script language=\"javascript\"" + (id != "" ? " id=\"" + id + "\"" : "") + " src=\"" + url + (url.Contains("?") ? "&" : "?") + "v=" + App.Version + "\"" +
                 (callback != "" ? " onload=\"" + callback + "\"" : "") + "></script>");
         }
 
         public void AddCSS(string url, string id = "")
         {
             if (ContainsResource(url)) { return; }
-            Css.Append("<link rel=\"stylesheet\" type=\"text/css\"" + (id != "" ? " id=\"" + id + "\"" : "") + " href=\"" + url + "\"></link>");
+            Css.Append("<link rel=\"stylesheet\" type=\"text/css\"" + (id != "" ? " id=\"" + id + "\"" : "") + " href=\"" + url + (url.Contains("?") ? "&" : "?") + "v=" + App.Version + "\"></link>");
         }
 
         public bool ContainsResource(string url)
