@@ -15,6 +15,7 @@ namespace Saber.Vendor
 
         public class Column
         {
+            public string Id { get; set; } = "";
             public string Name { get; set; } = "";
             public DataType DataType { get; set; } = DataType.Text;
         }
@@ -201,14 +202,14 @@ namespace Saber.Vendor
             return Delegates.DataSources.RenderFilters(request, datasource, filters);
         }
 
-        public static string RenderFilterGroups(IRequest request, DataSourceInfo datasource, List<FilterGroup> filters, int depth = 0)
+        public static string RenderFilterGroups(IRequest request, DataSourceInfo datasource, Relationship[]? relationships, List<FilterGroup> filters, int depth = 0)
         {
-            return Delegates.DataSources.RenderFilterGroups(request, datasource, filters, depth);
+            return Delegates.DataSources.RenderFilterGroups(request, datasource, relationships, filters, depth);
         }
 
-        public static string RenderFilter(IRequest request, DataSource datasource, FilterElement filter)
+        public static string RenderFilter(IRequest request, DataSourceInfo info, DataSource datasource, Relationship[]? relationships, FilterElement filter)
         {
-            return Delegates.DataSources.RenderFilter(request, datasource, filter);
+            return Delegates.DataSources.RenderFilter(request, info, datasource, relationships, filter);
         }
 
         public static string RenderOrderBy(OrderBy orderby)

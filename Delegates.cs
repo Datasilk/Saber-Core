@@ -126,14 +126,14 @@ namespace Saber.Core
         public static class DataSources
         {
             public static Action<DataSourceInfo> Add { get; set; }
-            public static Func<IRequest, Saber.Vendor.DataSource, Saber.Vendor.DataSource.FilterElement, string> RenderFilter { get; set; }
-            public static Func<IRequest, DataSourceInfo, List<Saber.Vendor.DataSource.FilterGroup>, string> RenderFilters { get; set; }
-            public static Func<IRequest, DataSourceInfo, List<Saber.Vendor.DataSource.FilterGroup>, int, string> RenderFilterGroups { get; set; }
+            public static Func<IRequest, DataSourceInfo, DataSource, DataSource.Relationship[], DataSource.FilterElement, string> RenderFilter { get; set; }
+            public static Func<IRequest, DataSourceInfo, List<DataSource.FilterGroup>, string> RenderFilters { get; set; }
+            public static Func<IRequest, DataSourceInfo, DataSource.Relationship[]?, List<DataSource.FilterGroup>, int, string> RenderFilterGroups { get; set; }
             
-            public static Func<Saber.Vendor.DataSource.OrderBy, string> RenderOrderBy { get; set; }
-            public static Func<DataSourceInfo, List<Saber.Vendor.DataSource.OrderBy>, string> RenderOrderByList { get; set; }
+            public static Func<DataSource.OrderBy, string> RenderOrderBy { get; set; }
+            public static Func<DataSourceInfo, List<DataSource.OrderBy>, string> RenderOrderByList { get; set; }
 
-            public static Func<DataSourceInfo, Saber.Vendor.DataSource.PositionSettings, string> RenderPositionSettings { get; set; }
+            public static Func<DataSourceInfo, DataSource.PositionSettings, string> RenderPositionSettings { get; set; }
         }
 
         public static class Image
@@ -155,7 +155,7 @@ namespace Saber.Core
         public static class Notifications
         {
             public static Action<string, string, string, int?, int?, string> CreateNotification { get; set; }
-            public static Func<Vendor.NotificationType, View, Guid, string, string, bool, DateTime?, string> Render { get; set; }
+            public static Func<NotificationType, View, Guid, string, string, bool, DateTime?, string> Render { get; set; }
         }
     }
 }
