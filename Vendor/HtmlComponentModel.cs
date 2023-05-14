@@ -53,6 +53,11 @@ namespace Saber.Vendor
         public virtual bool Block { get; set; } = false;
 
         /// <summary>
+        /// Determines if your HTML component can include an ID
+        /// </summary>
+        public virtual bool NoID { get; set; } = false;
+
+        /// <summary>
         /// Determines if your HTML component will display a content field in the Page Content tab
         /// </summary>
         public virtual bool ContentField { get; set; } = true;
