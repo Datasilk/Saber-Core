@@ -148,7 +148,7 @@ namespace Saber.Vendor
         /// If DataType = List, provide an array of strings for the user to choose from
         /// within a drop down list
         /// </summary>
-        public KeyValuePair<string, string>[] ListOptions { get; set; } 
+        public Func<KeyValuePair<string, string>[]> ListOptions { get; set; } 
 
         /// <summary>
         /// A brief summary of what the parameter is used for
