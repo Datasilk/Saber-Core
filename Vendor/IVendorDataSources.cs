@@ -61,7 +61,7 @@ namespace Saber.Vendor
         /// <param name="Request">Current request context</param>
         /// <param name="key">Data Source key</param>
         /// <param name="start">The starting row to get</param>
-        /// <param name="length">The amount of rows to get. Make sure to return 1 extra row of data to signify that there is at least 1 more page of rows in the data source filter that can be viewed (e.g. length + 1 = 10 + 1 = 11 rows)</param>
+        /// <param name="length">The amount of rows to get.</param>
         /// <param name="lang">The language to use when accessing your data source</param>
         /// <param name="filter">The filter to apply to the data source</param>
         /// <param name="orderBy">The columns used to sort the records by</param>
@@ -74,7 +74,7 @@ namespace Saber.Vendor
         /// <param name="Request">Current request context</param>
         /// <param name="key">Data Source key</param>
         /// <param name="start">The starting row to get</param>
-        /// <param name="length">The amount of rows to get. Make sure to return 1 extra row of data to signify that there is at least 1 more page of rows in the data source filter that can be viewed (e.g. length + 1 = 10 + 1 = 11 rows)</param>
+        /// <param name="length">The amount of rows to get.</param>
         /// <param name="lang">The language to use when accessing your data source</param>
         /// <param name="filter">The filter to apply to the data source</param>
         /// <param name="orderBy">The columns used to sort the records by</param>
